@@ -1,0 +1,1288 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DevHub | Sistemas, automações e dashboards sob medida</title>
+<meta name="description" content="A DevHub cria sites, sistemas, integrações com ERP, automações e dashboards sob medida. Diagnóstico gratuito pelo WhatsApp (92) 99451-5733.">
+<meta name="theme-color" content="#1740D8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:title" content="DevHub | Sistemas, automações e dashboards sob medida">
+<meta property="og:description" content="Tecnologia sob medida para empresas que cresceram mais rápido que seus sistemas.">
+<meta property="og:image" content="https://devhub.lat/og-image.png">
+<meta property="og:url" content="https://devhub.lat/">
+<meta property="og:type" content="website">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap">
+<style>
+/* Layout: faixa azul com título e o painel do produto sangrando para a seção seguinte; depois seções em grid de 12 colunas, alinhadas à esquerda, com telas de produto como prova; o "DevHub" gigante fecha a página. */
+:root{
+  --azul:#1740D8; --azul-forte:#1233AE; --noite:#0B1B4D; --ceu:#9DB5FF;
+  --bg:#FFFFFF; --bg-alt:#EEF2FB; --fg:#101828; --muted:#56637E; --line:#D6DEEE; --card:#FFFFFF; --accent-fg:#1740D8;
+  --band:#1740D8; --band-muted:rgba(255,255,255,.8); --band-line:rgba(255,255,255,.26);
+  --dark:#0B1B4D; --dark-muted:rgba(255,255,255,.72); --dark-line:rgba(157,181,255,.22);
+  /* telas de produto: sempre claras, como um app real */
+  --s-bg:#F5F7FC; --s-card:#FFFFFF; --s-line:#E4E9F3; --s-ink:#101828; --s-mut:#6B7794; --s-soft:#EEF2FB;
+  --s-ok:#12805C; --s-ok-bg:#E2F4EC; --s-warn:#B45309; --s-warn-bg:#FCEFDD; --s-bad:#C2410C; --s-info-bg:#E8EEFF;
+  --font:'Inter','Inter Display','Segoe UI',system-ui,-apple-system,sans-serif;
+  --max:1180px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#08112E; --bg-alt:#0D1940; --fg:#EEF2FF; --muted:#A6B2D0; --line:#22305E; --card:#101E4A; --accent-fg:#9DB5FF;
+  --band:#1538B8; --dark:#050C24; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#08112E; --bg-alt:#0D1940; --fg:#EEF2FF; --muted:#A6B2D0; --line:#22305E; --card:#101E4A; --accent-fg:#9DB5FF;
+  --band:#1538B8; --dark:#050C24; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-optical-sizing:auto;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;font-feature-settings:"cv11","ss01"}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--band)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ceu);outline-offset:3px;border-radius:6px}
+h1,h2,h3,h4{margin:0;text-wrap:balance;font-weight:600}
+p{margin:0}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+section{padding-block:104px}
+.num{font-variant-numeric:tabular-nums}
+
+/* escala tipográfica (a mesma da apresentação) */
+.t-h1{font-size:clamp(36px,5.6vw,72px);line-height:1.04;letter-spacing:-.036em;font-weight:600;max-width:18ch}
+.t-h2{font-size:clamp(30px,4.2vw,46px);line-height:1.08;letter-spacing:-.03em;font-weight:600;max-width:22ch}
+.t-h3{font-size:clamp(22px,2.3vw,26px);line-height:1.18;letter-spacing:-.02em;font-weight:600}
+.t-h4{font-size:19px;line-height:1.3;letter-spacing:-.012em;font-weight:600}
+.lead{font-size:clamp(17px,1.6vw,19px);line-height:1.55;color:var(--muted);max-width:60ch}
+.small{font-size:15.5px;line-height:1.55;color:var(--muted)}
+.sec-head{display:grid;gap:10px;margin-bottom:52px}
+.sec-head .lead{margin-top:6px}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 16px/1 var(--font);text-decoration:none;padding:16px 22px;border-radius:10px;border:1.5px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-white{background:#fff;color:#0B1B4D}
+.btn-white svg{fill:#1FAF5A}
+.btn-ghost{border-color:var(--band-line);color:#fff;background:transparent}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+
+/* navegação */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:25;background:var(--band);color:#fff;border-bottom:1px solid var(--band-line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:66px}
+
+/* logo: tag </> + DevHub */
+.logo{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:23px;letter-spacing:-.04em;text-decoration:none;color:#fff}
+.logo .mk{width:36px;height:36px;flex:none;color:#fff}
+.logo .mk .nd{fill:var(--ceu)}
+.logo .hub{color:var(--ceu)}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:15px}
+.nav ul a{text-decoration:none;color:var(--band-muted)}
+.nav ul a:hover{color:#fff}
+.nav .btn{padding:11px 15px;font-size:14px}
+@media (max-width:960px){.nav ul{display:none}}
+@media (max-width:420px){.nav .btn .long{display:none}}
+
+/* abertura: a capa da apresentação */
+.hero{background:var(--band);color:#fff;padding-block:88px 0;overflow:hidden}
+.cover-top{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;row-gap:28px}
+.cover-top .tag{grid-column:1/7;font-size:clamp(30px,3.7vw,46px);line-height:1.14;font-weight:500;letter-spacing:-.025em}
+.cover-r{grid-column:8/13;display:grid;gap:28px;align-content:start;padding-top:6px}
+.hero .lead{color:var(--band-muted)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.cover-list{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;margin-top:64px;padding-top:18px;border-top:1px solid var(--band-line);font-size:15px;color:rgba(255,255,255,.88)}
+.hero .giant{font-size:clamp(96px,26.5vw,340px);line-height:.8;font-weight:700;letter-spacing:-.055em;margin-top:56px;white-space:nowrap;transform:translateY(12%);user-select:none;margin-left:-.04em}
+.hero .giant span{color:var(--ceu)}
+@media (max-width:900px){.cover-top .tag,.cover-r{grid-column:1/-1}.cover-list{justify-content:flex-start;margin-top:44px}.cover-list span{flex:0 0 calc(50% - 12px)}}
+@media (max-width:420px){.hero .ctas .btn{width:100%}}
+
+/* cabeçalho corrido, como nas páginas da apresentação */
+.rh{display:flex;justify-content:space-between;gap:16px;font-size:13px;line-height:1;color:var(--muted);margin-bottom:44px}
+.rh b{font-weight:600;color:var(--fg)}
+.rh .pg{margin-left:6px;font-variant-numeric:tabular-nums}
+.cases .rh,.cta .rh{color:rgba(255,255,255,.6)}
+.cases .rh b,.cta .rh b{color:#fff}
+
+/* quem somos */
+.quem-g{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;row-gap:40px}
+.quem-g .st{grid-column:1/7;display:grid;gap:28px;align-content:start}
+.quem-g .st .t-h2{font-size:clamp(28px,3.3vw,40px);line-height:1.14;max-width:none}
+.quem-g .cols{grid-column:8/13;display:grid;gap:28px;align-content:start}
+.quem-g .cols div{border-top:1px solid var(--line);padding-top:16px;display:grid;gap:8px}
+@media (max-width:900px){.quem-g .st,.quem-g .cols{grid-column:1/-1}}
+
+/* na prática */
+.pratica{background:var(--bg-alt);padding-bottom:150px}
+.pratica .facts{display:flex;flex-wrap:wrap;gap:12px 40px;margin-top:18px;font-size:15px;color:var(--muted)}
+.pratica .facts b{display:block;color:var(--fg);font-size:22px;letter-spacing:-.02em;font-weight:600}
+.hero-stage{position:relative}
+@media (max-width:900px){.pratica{padding-bottom:72px}}
+
+/* ===== telas de produto ===== */
+.screen{background:var(--s-bg);color:var(--s-ink);border-radius:14px;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 30px 80px rgba(6,16,52,.32),0 2px 6px rgba(6,16,52,.12);font-size:13px;line-height:1.4;position:relative;z-index:1}
+.chrome{display:flex;align-items:center;gap:7px;height:36px;padding:0 14px;background:#fff;border-bottom:1px solid var(--s-line)}
+.chrome i{width:10px;height:10px;border-radius:50%;background:#E1E6F0;display:block}
+.chrome .url{margin-left:12px;flex:1;max-width:340px;height:22px;border-radius:6px;background:var(--s-soft);color:var(--s-mut);font-size:11.5px;display:flex;align-items:center;padding:0 10px;white-space:nowrap;overflow:hidden}
+.s-card{background:var(--s-card);border:1px solid var(--s-line);border-radius:10px;min-width:0}
+.s-mut{color:var(--s-mut)}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.c-ok{background:var(--s-ok-bg);color:var(--s-ok)}
+.c-warn{background:var(--s-warn-bg);color:var(--s-warn)}
+.c-info{background:var(--s-info-bg);color:var(--azul)}
+.c-mut{background:var(--s-soft);color:var(--s-mut)}
+.av{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:600;color:#fff;flex:none}
+
+/* painel principal */
+.app{display:grid;grid-template-columns:200px 1fr;min-height:470px}
+.side{background:#0B1B4D;color:#C9D5F5;padding:16px 12px;display:flex;flex-direction:column;gap:2px}
+.side .brand{font-weight:700;letter-spacing:-.03em;font-size:17px;color:#fff;padding:4px 10px 16px}
+.side .brand span{color:var(--ceu)}
+.side a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;text-decoration:none;font-size:13px}
+.side a svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.side a.on{background:rgba(157,181,255,.16);color:#fff}
+.side .sep{margin:14px 10px 6px;font-size:11px;color:#7F8FBF}
+.main{padding:18px 20px;display:grid;gap:14px;min-width:0;align-content:start}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.topbar h4{font-size:17px;letter-spacing:-.015em}
+.topbar .r{display:flex;align-items:center;gap:8px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.kpi{padding:12px 13px;display:grid;gap:2px}
+.kpi .k{font-size:11.5px;color:var(--s-mut)}
+.kpi .v{font-size:20px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.kpi .d{display:flex;justify-content:space-between;align-items:end;gap:6px;font-size:11.5px;font-weight:600}
+.kpi svg{width:64px;height:22px;flex:none}
+.up{color:var(--s-ok)}
+.row2{display:grid;grid-template-columns:1.7fr 1fr;gap:10px}
+.panel{padding:14px 14px 10px}
+.panel-h{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+.panel-h b{font-size:13px;font-weight:600}
+.legend{display:flex;gap:12px;font-size:11px;color:var(--s-mut)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:10px;height:3px;border-radius:2px;display:block}
+.chart{display:block;width:100%;height:auto}
+.rank{display:grid;gap:11px;margin-top:4px}
+.rank .it{display:grid;grid-template-columns:1fr auto;gap:5px 8px;font-size:12.5px}
+.rank .it b{font-weight:600;font-variant-numeric:tabular-nums}
+.track{grid-column:1/-1;height:6px;border-radius:3px;background:var(--s-soft);overflow:hidden}
+.track span{display:block;height:100%;border-radius:3px;background:var(--azul)}
+
+/* celular */
+.phone{position:absolute;right:-44px;bottom:-96px;width:240px;border-radius:30px;background:#0A1230;padding:9px;box-shadow:0 30px 70px rgba(6,16,52,.45);z-index:2}
+.phone .scr{border-radius:22px;overflow:hidden;background:#EAE4DA;color:#101828}
+.ph-head{display:flex;align-items:center;gap:9px;background:#0E6B4D;color:#fff;padding:22px 12px 10px}
+.ph-head b{display:block;font-size:13px;font-weight:600}
+.ph-head small{font-size:10.5px;opacity:.8}
+.ph-body{padding:10px;display:grid;gap:7px;font-size:12px;line-height:1.38;min-height:230px;align-content:start}
+.bub{max-width:90%;background:#fff;border-radius:9px;padding:7px 9px;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.bub.me{justify-self:end;background:#D9F8C8}
+.bub small{display:block;text-align:right;font-size:9.5px;color:#7A8597;margin-top:2px}
+.bub .doc{display:flex;align-items:center;gap:7px;background:rgba(0,0,0,.05);border-radius:6px;padding:6px 7px;margin-top:6px;font-size:11px;font-weight:600}
+.bub .doc i{width:18px;height:22px;border-radius:3px;background:#E04F4F;display:block;flex:none}
+.day{justify-self:center;font-size:10px;background:#fff;border-radius:6px;padding:2px 8px;color:#6B7794}
+
+/* aviso do robô */
+.toast{position:absolute;left:-16px;bottom:22%;width:270px;display:flex;gap:11px;align-items:flex-start;background:#fff;color:var(--s-ink);border-radius:12px;padding:12px 14px;box-shadow:0 20px 50px rgba(6,16,52,.3);z-index:2;font-size:12.5px;line-height:1.4}
+.toast .ic{width:30px;height:30px;border-radius:8px;background:var(--s-ok-bg);display:grid;place-items:center;flex:none}
+.toast .ic svg{width:16px;height:16px;stroke:var(--s-ok);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.toast b{display:block;font-size:13px}
+
+.rise{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.rise.d1{animation-delay:.35s}.rise.d2{animation-delay:.6s}
+@keyframes rise{from{transform:translateY(16px);opacity:.001}to{transform:none;opacity:1}}
+
+@media (max-width:1100px) and (min-width:901px){.phone{right:6px}.toast{left:8px}}
+@media (max-width:900px){.rise{animation:none}}
+@media (max-width:900px){
+  .app{grid-template-columns:1fr;min-height:0}
+  .side{display:none}
+  .kpis{grid-template-columns:1fr 1fr}
+  .row2{grid-template-columns:1fr}
+  .phone,.toast{position:relative;right:auto;left:auto;bottom:auto}
+  .hero-extras{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:end;margin-top:-40px;padding-inline:8px;position:relative;z-index:2}
+  .phone{width:200px}
+  .toast{width:auto}
+  .ph-body{min-height:0}
+}
+@media (max-width:560px){
+  .hero-extras{grid-template-columns:1fr;justify-items:center;margin-top:-28px}
+  .toast{order:-1;width:100%}
+  .phone{width:230px}
+  .main{padding:14px}
+  .kpi .v{font-size:17px}
+  .kpi svg{display:none}
+  .chrome .url{max-width:180px}
+  .topbar .r .chip.c-mut{display:none}
+}
+
+/* serviços */
+.services{background:var(--bg-alt)}
+.groups{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.group .gt{font-size:15px;font-weight:600;color:var(--accent-fg);padding-bottom:12px;border-bottom:2px solid var(--accent-fg)}
+.svc{padding:22px 0;border-bottom:1px solid var(--line);display:grid;gap:6px}
+.svc:last-child{border-bottom:0}
+.svc .ex{margin-top:6px;font-size:14px;line-height:1.5;color:var(--fg);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.svc .ex b{font-weight:600}
+@media (max-width:900px){.groups{grid-template-columns:1fr;gap:16px}}
+
+
+/* exemplos práticos (mesmas telas da apresentação) */
+.exs{background:var(--bg-alt)}
+.xg{display:grid;gap:22px}
+.xg+.xg{margin-top:72px;padding-top:48px;border-top:1px solid var(--line)}
+.x-ex2{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px}
+.x-exc{display:flex;flex-direction:column;gap:18px;min-width:0}
+.x-shot{height:330px;position:relative;color:#101828;min-width:0;overflow:hidden;border-radius:12px}
+.x-ext{display:grid;gap:6px}
+.x-ext .x-sv{font-size:14px;font-weight:500}
+@media (max-width:900px){.x-ex2{grid-template-columns:1fr;gap:44px}.xg+.xg{margin-top:56px;padding-top:40px}}
+.x-win{background:#F5F7FC;border:1px solid #E1E7F2;border-radius:12px;overflow:hidden;box-shadow:0 14px 34px rgba(11,27,77,.12);height:100%;display:flex;flex-direction:column}
+.x-chr{display:flex;align-items:center;gap:6px;height:28px;padding:0 12px;background:#fff;border-bottom:1px solid #E4E9F3;flex:none}
+.x-chr i{width:8px;height:8px;border-radius:50%;background:#DCE2EE;display:block}
+.x-chr .x-url{margin-left:10px;font-size:10px;color:#6B7794;background:#EEF2FB;border-radius:5px;padding:3px 9px}
+.x-chip{display:inline-block;font-size:10px;font-weight:600;padding:2px 7px;border-radius:999px;white-space:nowrap}
+.x-c-ok{background:#E2F4EC;color:#12805C}.x-c-warn{background:#FCEFDD;color:#B45309}.x-c-info{background:#E8EEFF;color:#1740D8}
+/* site */
+.x-site{background:#fff;flex:1;display:flex;flex-direction:column}
+.x-snav{display:flex;align-items:center;gap:16px;padding:10px 16px;font-size:10.5px;color:#56637E;border-bottom:1px solid #EEF1F6}
+.x-snav b{font-size:13px;color:#0B1B4D;margin-right:auto;letter-spacing:-.02em}.x-snav b span{color:#E0761A}
+.x-snav em{font-style:normal;background:#0B1B4D;color:#fff;border-radius:6px;padding:5px 9px;font-weight:600}
+.x-shero{background:linear-gradient(120deg,#0B1B4D,#163A9C);color:#fff;padding:18px 16px;display:grid;grid-template-columns:1.3fr 1fr;gap:14px;align-items:center}
+.x-sh1{font-size:17px;font-weight:600;line-height:1.15;letter-spacing:-.02em}
+.x-sp{font-size:10.5px;color:rgba(255,255,255,.75);margin-top:6px}
+.x-swa{display:inline-block;margin-top:10px;background:#25B05E;border-radius:6px;padding:6px 10px;font-size:10.5px;font-weight:600}
+.x-strack{background:#fff;color:#101828;border-radius:8px;padding:10px;display:grid;gap:6px;font-size:10px}
+.x-strack small{font-weight:600;font-size:10.5px}
+.x-strack .x-inp{border:1px solid #DCE2EE;border-radius:5px;padding:5px 7px;color:#9AA5BE}
+.x-strack .x-bt{background:#E0761A;color:#fff;border-radius:5px;padding:5px;text-align:center;font-weight:600}
+.x-strack .x-st{display:flex;align-items:center;gap:5px;color:#12805C;font-weight:500}.x-strack .x-st i{width:6px;height:6px;border-radius:50%;background:#12805C;display:block}
+.x-stiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 16px}
+.x-stiles div{border:1px solid #EEF1F6;border-radius:8px;padding:9px;display:grid;gap:2px;font-size:10px;color:#6B7794}
+.x-stiles b{font-size:11.5px;color:#101828}
+/* celulares */
+.x-phones{display:flex;justify-content:center;gap:26px;align-items:flex-start;background:var(--nevoa);border-radius:12px;padding-top:14px;overflow:hidden}
+.x-ph{width:168px;border-radius:24px;background:#0A1230;padding:6px;box-shadow:0 14px 30px rgba(11,27,77,.25)}
+.x-ph2{margin-top:26px}
+.x-phs{background:#F5F7FC;border-radius:19px;overflow:hidden;height:300px;display:flex;flex-direction:column;font-size:10px}
+.x-aph{background:#1740D8;color:#fff;padding:16px 12px 10px;display:grid;gap:1px}
+.x-aph small{font-size:9.5px;opacity:.8}.x-aph b{font-size:12.5px}
+.x-aring{display:flex;align-items:center;gap:8px;background:#fff;margin:8px;border-radius:8px;padding:8px}
+.x-aring svg{width:52px;height:52px}
+.x-aring b{display:block;font-size:12px}.x-aring small{color:#6B7794}
+.x-alist{background:#fff;margin:0 8px;border-radius:8px;padding:8px;display:grid;gap:6px}
+.x-alist small{color:#6B7794;font-size:9.5px}
+.x-alist div{display:flex;justify-content:space-between;gap:6px}.x-alist b{font-weight:600}
+.x-atab{margin-top:auto;display:flex;justify-content:space-around;background:#fff;border-top:1px solid #E4E9F3;padding:8px 0;color:#9AA5BE;font-size:9.5px}
+.x-atab .x-on{color:#1740D8;font-weight:600}
+.x-aform{background:#fff;margin:8px;border-radius:8px;padding:4px 8px}
+.x-aform div{display:grid;gap:1px;padding:6px 0;border-bottom:1px solid #EEF1F6}.x-aform div:last-child{border-bottom:0}
+.x-aform small{color:#6B7794;font-size:9px}.x-aform span{font-weight:500}
+.x-aform .x-mg span{color:#12805C;font-weight:700}
+.x-abtn{margin:0 8px;background:#1740D8;color:#fff;text-align:center;border-radius:7px;padding:8px;font-weight:600}
+/* sistema */
+.x-sys{display:grid;grid-template-columns:118px 1fr;flex:1}
+.x-sside{background:#0B1B4D;color:#B9C6EA;padding:12px 8px;display:flex;flex-direction:column;gap:3px;font-size:10.5px}
+.x-sside b{color:#fff;font-size:12px;padding:0 6px 10px;letter-spacing:-.02em}.x-sside b span{color:#9DB5FF}
+.x-sside span{padding:6px;border-radius:6px}.x-sside .x-on{background:rgba(157,181,255,.18);color:#fff}
+.x-smain{padding:12px 14px;background:#F5F7FC}
+.x-stop{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.x-stop b{font-size:12.5px}
+.x-tb{width:100%;border-collapse:collapse;font-size:10.5px;background:#fff;border:1px solid #E4E9F3;border-radius:8px}
+.x-tb th{text-align:left;color:#6B7794;font-weight:500;font-size:9.5px;padding:7px 9px;border-bottom:1px solid #E4E9F3}
+.x-tb td{padding:8px 9px;border-bottom:1px solid #F0F3F9;font-variant-numeric:tabular-nums;white-space:nowrap}
+.x-tb tr:last-child td{border-bottom:0}
+.x-tr{width:90px;height:6px;border-radius:3px;background:#EEF2FB;overflow:hidden}.x-tr span{display:block;height:100%;max-width:100%;background:#1740D8;border-radius:3px}.x-tr span.x-w{background:#D97706}
+/* integração */
+.x-integ{display:grid;grid-template-columns:1fr 64px 150px;align-items:center;gap:6px;background:var(--nevoa);border-radius:12px;padding:0 12px}
+.x-erp{height:auto}
+.x-erpl{background:#fff;font-size:10px}
+.x-erpl div{display:grid;grid-template-columns:30px 1fr auto;gap:6px;padding:8px 10px;border-bottom:1px solid #EEF1F6}
+.x-erpl div:last-child{border-bottom:0}.x-erpl span:first-child{color:#9AA5BE}.x-erpl b{font-weight:600}
+.x-flowa{display:grid;justify-items:center;gap:4px;position:relative}
+.x-flowa::before{content:"";position:absolute;left:-6px;right:-6px;top:15px;height:2px;background:#1740D8}
+.x-flowa .x-hub{position:relative;background:#1740D8;color:#fff;font-size:10px;font-weight:700;border-radius:6px;padding:6px 7px;letter-spacing:-.01em}
+.x-flowa small{font-size:8.5px;color:#56637E;text-align:center;line-height:1.2}
+.x-ph3{width:150px;padding:5px;border-radius:22px}
+.x-ph3 .x-phs{height:270px;background:#EAE4DA}
+.x-wah{display:flex;align-items:center;gap:6px;background:#0E6B4D;color:#fff;padding:14px 8px 8px;font-size:10.5px}
+.x-wah .x-av{width:20px;height:20px;border-radius:50%;background:#25B05E;display:grid;place-items:center;font-size:8px;font-weight:700}
+.x-wab{padding:8px;display:grid;gap:6px;font-size:9.5px;line-height:1.35}
+.x-bub{background:#fff;border-radius:7px;padding:6px 7px;max-width:92%}
+.x-bub.x-me{background:#D9F8C8;justify-self:end}
+.x-bub .x-doc{display:flex;align-items:center;gap:5px;background:rgba(0,0,0,.05);border-radius:5px;padding:4px 5px;margin-top:5px;font-weight:600;font-size:9px}
+.x-bub .x-doc i{width:12px;height:15px;background:#E04F4F;border-radius:2px;display:block}
+/* rota */
+.x-route{display:grid;grid-template-columns:1.15fr 1fr;flex:1;background:#fff}
+.x-map{width:100%;height:100%;display:block}
+.x-stops{padding:10px 12px;display:grid;gap:2px;align-content:start;font-size:10.5px}
+.x-stops .x-sum{display:flex;justify-content:space-between;padding-bottom:6px;margin-bottom:2px;border-bottom:1px solid #EEF1F6}.x-stops .x-sum b{font-size:14px}.x-stops .x-sum span{color:#6B7794;align-self:end}
+.x-stops>div:not(.x-sum){display:grid;grid-template-columns:18px 1fr auto;gap:7px;align-items:center;padding:4px 0}
+.x-stops i{width:18px;height:18px;border-radius:50%;background:#1740D8;color:#fff;font-style:normal;font-size:9px;font-weight:700;display:grid;place-items:center}
+.x-stops i.x-d{background:#0B1B4D}
+.x-stops em{font-style:normal;color:#6B7794;font-variant-numeric:tabular-nums}
+/* robô */
+.x-robo{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:14px;flex:1}
+.x-ring{background:#fff;border:1px solid #E4E9F3;border-radius:10px;display:grid;justify-items:center;align-content:center;gap:6px;text-align:center;font-size:11px}
+.x-ring svg{width:96px;height:96px}
+.x-rsteps{background:#fff;border:1px solid #E4E9F3;border-radius:10px;padding:4px 12px;display:grid}
+.x-rsteps div{display:grid;grid-template-columns:18px 1fr auto;gap:8px;align-items:center;font-size:10.5px;border-bottom:1px solid #EEF1F6}
+.x-rsteps div:last-child{border-bottom:0}
+.x-ck{width:16px;height:16px;border-radius:50%;background:#12805C;color:#fff;font-style:normal;font-size:9px;display:grid;place-items:center;font-weight:700}
+.x-rsteps em{font-style:normal;color:#6B7794}
+/* painel */
+.x-dash{padding:12px;display:grid;gap:10px;flex:1;align-content:start}
+.x-kp{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.x-kp div{background:#fff;border:1px solid #E4E9F3;border-radius:8px;padding:8px 10px;display:grid}
+.x-kp small{font-size:9.5px;color:#6B7794}.x-kp b{font-size:16px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.x-kp em{font-style:normal;font-size:9.5px;color:#12805C;font-weight:600}
+.x-dg{display:grid;grid-template-columns:1.5fr 1fr;gap:8px}
+.x-dch,.x-drk{background:#fff;border:1px solid #E4E9F3;border-radius:8px;padding:8px 10px}
+.x-dch small,.x-drk small{font-size:10px;font-weight:600}
+.x-dch svg{display:block;width:100%;margin-top:6px}
+.x-drk{display:grid;gap:5px;align-content:start}
+.x-drk div{display:grid;grid-template-columns:1fr auto;font-size:10px;row-gap:3px}
+.x-drk div b{font-weight:600;font-variant-numeric:tabular-nums}
+.x-drk div i{grid-column:1/-1;height:5px;border-radius:3px;background:#1740D8;display:block}
+.x-drk .x-u{font-weight:400;color:#9AA5BE;font-size:9px}
+/* simulador */
+.x-sim{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:12px;flex:1}
+.x-sform{background:#fff;border:1px solid #E4E9F3;border-radius:8px;padding:4px 10px}
+.x-sform div{display:grid;padding:6px 0;border-bottom:1px solid #EEF1F6;font-size:10.5px}
+.x-sform div:last-child{border-bottom:0}
+.x-sform small{font-size:9px;color:#6B7794}.x-sform span{font-weight:500}
+.x-sform .x-res b{font-size:20px;color:#12805C;letter-spacing:-.02em}
+.x-wf{background:#fff;border:1px solid #E4E9F3;border-radius:8px;width:100%;height:100%;padding:6px}
+
+.x-ext .x-h3{font-size:21px;line-height:1.2;letter-spacing:-.018em;font-weight:600;color:var(--fg)}
+.x-ext .x-small{font-size:15px;line-height:1.55;color:var(--muted)}
+.x-ext .x-sv{color:var(--accent-fg)}
+.x-phones,.x-integ{background:var(--bg-alt)}
+
+@media (max-width:560px){
+  .x-shot{height:auto}
+  .x-phones{height:330px}
+  .x-ph2{display:none}
+  .x-sys{grid-template-columns:1fr}.x-sside{display:none}
+  .x-tr{width:56px}
+  .x-integ{grid-template-columns:1fr;justify-items:center;gap:12px;padding:14px}
+  .x-integ .x-erp{width:100%}
+  .x-flowa::before{display:none}
+  .x-shero{grid-template-columns:1fr}.x-strack{display:none}
+  .x-snav>span{display:none}
+  .x-route{grid-template-columns:1fr}
+  .x-map{height:auto;max-height:200px}
+  .x-robo,.x-sim{grid-template-columns:1fr;gap:10px;padding:12px}
+  .x-ring{grid-auto-flow:column;justify-content:start;align-items:center;gap:12px;padding:10px;text-align:left}
+  .x-ring svg{width:70px;height:70px}
+  .x-rsteps div{padding:7px 0}
+  .x-dg{grid-template-columns:1fr}
+  .x-wf{height:200px}
+}
+/* soluções */
+.cases{background:var(--dark);color:#fff}
+.cases .lead,.cases .small{color:var(--dark-muted)}
+.feature{display:grid;grid-template-columns:1.25fr 1fr;gap:64px;align-items:center;padding-block:44px;border-top:1px solid var(--dark-line)}
+.feature:first-of-type{border-top:0;padding-top:0}
+.feature.flip .shot{order:2}
+.feature .txt{display:grid;gap:12px;min-width:0}
+.feature .cat{font-size:15px;color:var(--ceu);font-weight:500}
+.ba{display:grid;grid-template-columns:64px 1fr;gap:10px 12px;margin:10px 0 0;font-size:16px;line-height:1.5}
+.ba dt{color:rgba(255,255,255,.5)}
+.ba dd{margin:0;color:rgba(255,255,255,.82)}
+.ba dd.ag{color:#fff;font-weight:500}
+.shot{min-width:0}
+.shot .screen{box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.s-pad{padding:16px;display:grid;gap:12px}
+@media (max-width:900px){.feature{grid-template-columns:1fr;gap:28px;padding-block:36px}.feature.flip .shot{order:0}}
+
+/* tela robô */
+.robo{display:grid;grid-template-columns:150px 1fr;gap:12px}
+.ring{display:grid;place-items:center;padding:14px;text-align:center}
+.ring svg{width:110px;height:110px}
+.ring b{font-size:13px;font-weight:600;margin-top:6px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cmp .s-card{padding:12px}
+.cmp .v{font-size:22px;font-weight:600;letter-spacing:-.02em}
+.steps-s{padding:6px 14px;display:grid}
+.steps-s div{display:grid;grid-template-columns:18px 1fr auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--s-line)}
+.steps-s div:last-child{border-bottom:0}
+.ck{width:18px;height:18px;border-radius:50%;background:var(--s-ok);display:grid;place-items:center}
+.ck svg{width:10px;height:10px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+
+/* tela cobrança */
+.regua{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;padding:14px 14px 12px}
+.regua::before{content:"";position:absolute;left:30px;right:30px;top:24px;height:2px;background:var(--s-line)}
+.regua div{position:relative;display:grid;justify-items:start;gap:4px;font-size:11.5px}
+.regua .dot{width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--azul);display:grid;place-items:center;font-size:10px;font-weight:700;color:var(--azul)}
+.regua .on .dot{background:var(--azul);color:#fff}
+.regua b{font-size:12px}
+.tbl-w{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px;min-width:440px}
+.tbl th{font-weight:500;text-align:left;color:var(--s-mut);font-size:11.5px;padding:9px 12px;border-bottom:1px solid var(--s-line);white-space:nowrap}
+.tbl td{padding:9px 12px;border-bottom:1px solid var(--s-line);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl tr:last-child td{border-bottom:0}
+.tbl .cli{display:flex;align-items:center;gap:8px}
+.tbl .cli .av{width:24px;height:24px;font-size:10px}
+.tbl .r{text-align:right}
+
+/* tela orçamento */
+.orc{display:grid;grid-template-columns:170px 1fr;gap:12px}
+.donut{padding:14px;display:grid;justify-items:center;gap:6px;text-align:center}
+.donut svg{width:120px;height:120px}
+.lines{padding:6px 14px}
+.ln{display:grid;grid-template-columns:96px 1fr 62px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--s-line);font-size:12px}
+.ln:last-child{border-bottom:0}
+.ln .bar{position:relative;height:8px;border-radius:4px;background:var(--s-soft)}
+.ln .bar span{position:absolute;inset:0 auto 0 0;border-radius:4px;background:var(--azul)}
+.ln .bar span.hot{background:#D97706}
+.ln .bar em{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--s-ink);border-radius:1px}
+.ln b{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+@media (max-width:560px){.robo,.orc{grid-template-columns:1fr}.ring,.donut{grid-template-columns:auto 1fr;justify-items:start;text-align:left;align-items:center;gap:14px}.ring svg,.donut svg{width:84px;height:84px}.regua div span.s-mut{display:none}}
+
+/* soluções menores */
+.minis{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:40px;padding-top:44px;border-top:1px solid var(--dark-line)}
+.mini{display:grid;gap:14px;align-content:start;min-width:0}
+.mini .screen{box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.mini .s-pad{min-height:196px}
+.com{display:grid;gap:9px}
+.com div{display:grid;grid-template-columns:24px 1fr auto;gap:9px;align-items:center;font-size:12.5px}
+.com .pos{width:24px;height:24px;border-radius:7px;background:var(--s-soft);display:grid;place-items:center;font-weight:600;font-size:11px;color:var(--azul)}
+.com b{font-weight:600;font-variant-numeric:tabular-nums}
+.wf{display:block;width:100%;height:auto}
+.map{display:block;width:100%;height:auto;border-radius:8px}
+.mapcap{display:flex;justify-content:space-between;gap:8px;font-size:12px}
+@media (max-width:900px){.minis{grid-template-columns:1fr;gap:40px}}
+
+/* calculadora */
+.calc .box{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
+.calc .in{padding:36px;display:grid;gap:28px;align-content:start}
+.field label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-weight:600;font-size:16px}
+.field output{font-weight:600;color:var(--accent-fg);font-variant-numeric:tabular-nums;white-space:nowrap}
+.field small{display:block;color:var(--muted);font-size:14px;margin-top:3px}
+.field input[type=range]{width:100%;margin-top:14px;accent-color:#1740D8;height:28px}
+.calc .out{background:var(--band);color:#fff;padding:36px;display:flex;flex-direction:column;gap:22px}
+.big{font-size:clamp(48px,7vw,76px);line-height:1;font-weight:650;letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.out .lbl{font-size:15px;color:var(--band-muted);margin-top:6px}
+.out .row{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-top:20px;border-top:1px solid var(--band-line)}
+.out .row b{font-size:clamp(22px,2.6vw,28px);font-weight:600;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.out .note{font-size:13.5px;color:var(--band-muted)}
+.out .btn{align-self:flex-start;margin-top:auto}
+@media (max-width:860px){.calc .box{grid-template-columns:1fr}.calc .in,.calc .out{padding:24px}.out .btn{align-self:stretch;white-space:normal;text-align:center}}
+
+/* integração */
+.flow{display:grid;grid-template-columns:1fr auto 1.2fr auto 1.3fr;align-items:center;gap:14px}
+.node{border:1.5px solid var(--line);border-radius:12px;padding:20px;background:var(--card);display:grid;gap:4px}
+.node small{font-size:13px;color:var(--muted)}
+.node b{font-size:19px;line-height:1.25;font-weight:600;letter-spacing:-.015em}
+.node.hub{background:var(--azul);border-color:var(--azul);color:#fff}
+.node.hub small{color:rgba(255,255,255,.75)}
+.arrow{width:44px;height:2px;background:var(--azul);position:relative}
+.arrow::after{content:"";position:absolute;right:-1px;top:-5px;border-left:9px solid var(--azul);border-top:6px solid transparent;border-bottom:6px solid transparent}
+.outs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.outs div{border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;font-weight:500;font-size:15px;background:var(--card)}
+.stack{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:56px}
+.stack h3{font-size:17px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.stack ul{list-style:none;padding:0;margin:12px 0 0;color:var(--muted);font-size:15.5px;line-height:1.95}
+@media (max-width:900px){.flow{grid-template-columns:1fr}.arrow{width:2px;height:28px;justify-self:center}.arrow::after{right:auto;left:-5px;top:auto;bottom:-1px;border-left:6px solid transparent;border-right:6px solid transparent;border-top:9px solid var(--azul);border-bottom:0}.stack{grid-template-columns:1fr 1fr;gap:28px}}
+
+/* processo */
+.process{background:var(--bg-alt)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:28px;list-style:none;padding:0;margin:0}
+.steps li{border-top:1px solid var(--line);padding-top:14px;display:grid;gap:6px;align-content:start}
+.steps li:last-child{border-top:3px solid var(--azul);padding-top:12px}
+.steps .n{font-size:68px;line-height:1;font-weight:300;letter-spacing:-.04em;color:var(--accent-fg);margin-bottom:14px}
+.tip{margin-top:48px;padding-left:20px;border-left:3px solid var(--azul);font-size:18px;max-width:62ch}
+.tip b{font-weight:600}
+@media (max-width:900px){
+  .steps{grid-template-columns:1fr;gap:0}
+  .steps li,.steps li:last-child{grid-template-columns:52px 1fr;column-gap:16px;row-gap:4px;padding:18px 0;border-top:1px solid var(--line)}
+  .steps .n{font-size:40px;grid-row:span 2;margin:0}
+  .tip{margin-top:32px;font-size:17px}
+}
+
+/* diferenciais */
+.why{background:var(--bg-alt)}
+.why .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.why .grid div{display:grid;gap:12px;align-content:start}
+.promise{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+.promise div{background:var(--card);border-radius:12px;padding:20px 22px;color:var(--muted);font-size:15.5px}
+.promise b{display:block;color:var(--fg);font-size:17px;margin-bottom:4px;font-weight:600}
+@media (max-width:900px){.why .grid,.promise{grid-template-columns:1fr;gap:24px}.promise{margin-top:36px;gap:12px}}
+
+/* dúvidas */
+.faq{background:var(--bg)}
+.faq-g{display:grid;grid-template-columns:1fr 1.6fr;gap:56px;align-items:start}
+.faq .sec-head{margin:0}
+.faq details{border-bottom:1px solid var(--line);padding-block:18px}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+.faq summary{cursor:pointer;font-size:18px;line-height:1.35;font-weight:600;letter-spacing:-.012em;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:26px;line-height:1;font-weight:300;color:var(--accent-fg);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--muted);margin-top:10px;max-width:62ch}
+@media (max-width:900px){.faq-g{grid-template-columns:1fr;gap:28px}}
+
+/* contato: última página da apresentação */
+.cta{background:var(--band);color:#fff;padding-block:104px 88px}
+.cta .lead{color:var(--band-muted);margin-top:22px;font-size:20px}
+.cta .row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:36px}
+.phone-num{display:flex;align-items:center;gap:10px;border:1.5px solid var(--band-line);border-radius:10px;padding:7px 7px 7px 18px}
+.phone-num span{white-space:nowrap;font-size:20px;font-weight:600;letter-spacing:-.01em;user-select:all;font-variant-numeric:tabular-nums}
+.phone-num button{font:600 14px var(--font);color:#fff;background:rgba(255,255,255,.14);border:0;border-radius:7px;padding:10px 12px;cursor:pointer}
+.contatos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px 40px;margin-top:88px;padding-top:18px;border-top:1px solid var(--band-line)}
+.contatos .k{display:block;font-size:13px;color:rgba(255,255,255,.62)}
+.contatos .v{display:block;text-decoration:none;color:#fff;overflow-wrap:anywhere;font-size:clamp(20px,2.2vw,26px);font-weight:500;letter-spacing:-.015em;margin-top:6px}
+@media (max-width:700px){.contatos{grid-template-columns:1fr;margin-top:56px}}
+footer{background:var(--dark);color:var(--dark-muted);font-size:14px;padding-block:24px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px 24px}
+footer .logo{font-size:19px}
+footer .logo .mk{width:30px;height:30px}
+
+@media (max-width:560px){section{padding-block:72px}.sec-head{margin-bottom:36px}.rh{margin-bottom:32px}.cta .row>*{width:100%}.phone-num{justify-content:space-between}.phone-num span{font-size:18px}}
+
+/* ===== estrutura de conversão ===== */
+.btn-blue{background:var(--azul);color:#fff}
+.btn-blue svg{fill:#fff}
+.promise-line{font-size:14.5px;color:var(--band-muted);padding-left:14px;border-left:2px solid var(--ceu)}
+.strip{padding-block:28px;border-bottom:1px solid var(--line)}
+.strip .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:14px 32px}
+.strip p{font-size:14px;color:var(--muted);flex:none}
+.strip ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:16px;font-weight:600;letter-spacing:-.01em;color:var(--fg);opacity:.72}
+.mid{background:var(--bg-alt);padding-block:64px}
+.mid .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
+.mid .t-h2{font-size:clamp(26px,3vw,36px)}
+.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 40px}
+.dgrid>div{border-top:3px solid var(--azul);padding-top:16px;display:grid;gap:8px;align-content:start}
+.dores-cta{margin-top:48px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;padding:22px 24px;border-radius:14px;background:var(--bg-alt)}
+.dores-cta p{font-size:18px;font-weight:600;letter-spacing:-.01em}
+.svcnav{background:var(--bg)}
+.scards{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:16px}
+.scard.first{grid-row:span 2;align-content:end;padding:28px 24px}
+.scard.first .t-h4{font-size:24px}
+.scard{display:grid;gap:8px;align-content:start;padding:22px 20px;border-radius:14px;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--fg);transition:border-color .15s ease,transform .15s ease}
+.scard:hover{border-color:var(--azul);transform:translateY(-2px)}
+.scard.first{background:var(--azul);border-color:var(--azul);color:#fff}
+.scard.first .small{color:rgba(255,255,255,.82)}
+.tagc{justify-self:start;font-size:12px;font-weight:600;background:rgba(255,255,255,.16);border-radius:999px;padding:4px 10px;margin-bottom:6px}
+.inv{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.inv .sec-head{margin-bottom:0}
+.drivers ul{list-style:none;margin:14px 0 0;padding:0;display:grid}
+.drivers li{padding:14px 0;border-top:1px solid var(--line);color:var(--muted);font-size:15.5px}
+.drivers li b{display:block;color:var(--fg);font-weight:600;font-size:16.5px;margin-bottom:2px}
+.calc-t{margin:64px 0 28px;max-width:30ch}
+footer{padding-block:56px 28px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:32px}
+.fbrand p{margin-top:14px;font-size:14px;color:rgba(255,255,255,.6);max-width:32ch}
+footer h3{font-size:13px;font-weight:600;color:#fff;margin-bottom:12px}
+footer nav,.fcontact{display:grid;gap:9px;align-content:start;font-size:14px}
+footer nav a{text-decoration:none;color:rgba(255,255,255,.62)}
+footer nav a:hover{color:#fff}
+.fcontact span{color:rgba(255,255,255,.62)}
+.flegal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;margin-top:44px;padding-top:18px;border-top:1px solid var(--dark-line);font-size:12.5px;color:rgba(255,255,255,.45)}
+footer .wrap{display:block}
+@media (max-width:1000px){.scards{grid-template-columns:repeat(2,1fr)}.scard.first{grid-column:1/-1}}
+@media (max-width:900px){.dgrid{grid-template-columns:1fr 1fr}.inv{grid-template-columns:1fr;gap:28px}.fgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.dgrid,.scards{grid-template-columns:1fr}.mid .btn,.dores-cta .btn{width:100%}.fgrid{grid-template-columns:1fr}.strip ul{gap:8px 18px;font-size:15px}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.7-.1 1.4z"/></symbol>
+  <symbol id="chk" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></symbol>
+</svg>
+
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a class="logo" href="#topo" aria-label="DevHub, início"><svg class="mk" viewBox="34 34 132 132" aria-hidden="true"><g fill="currentColor"><rect x="44" y="44" width="34" height="34" rx="9"/><rect x="83" y="44" width="34" height="34" rx="9"/><rect x="44" y="83" width="34" height="34" rx="9"/><rect x="122" y="83" width="34" height="34" rx="17"/><rect x="44" y="122" width="34" height="34" rx="9"/><rect x="83" y="122" width="34" height="34" rx="9"/></g><path d="M117 61 Q139 61 139 83 M117 139 Q139 139 139 117" stroke="currentColor" stroke-width="10" fill="none" stroke-linecap="round"/><rect class="nd" x="83" y="83" width="34" height="34" rx="17"/></svg><span>Dev<span class="hub">Hub</span></span></a>
+    <ul>
+      <li><a href="#solucoes">Soluções</a></li>
+      <li><a href="#processo">Como trabalhamos</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#investimento">Investimento</a></li>
+      <li><a href="#duvidas">Dúvidas</a></li>
+    </ul>
+    <a class="btn btn-white wa-link" href="https://wa.me/5592994515733" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg><span><span class="long">Falar no </span>WhatsApp</span></a>
+  </div>
+</nav>
+
+<header class="hero" id="topo">
+  <div class="wrap">
+    <div class="cover-top">
+      <h1 class="tag">Tecnologia sob medida para empresas que cresceram mais rápido que seus sistemas.</h1>
+      <div class="cover-r">
+        <p class="lead">Criamos sites, sistemas, integrações, automações e dashboards que tiram o trabalho repetitivo da equipe e colocam a informação certa na mão de quem decide.</p>
+        <div class="ctas">
+          <a class="btn btn-white wa-link" href="https://wa.me/5592994515733" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Quero um diagnóstico gratuito</a>
+          <a class="btn btn-ghost" href="#solucoes">Ver sistemas em produção</a>
+        </div>
+        <p class="promise-line">Escopo e preço fechados antes de começar, com entregas em etapas validadas por você.</p>
+      </div>
+    </div>
+    <div class="cover-list"><span>Sites profissionais</span><span>Sistemas web</span><span>Integrações</span><span>Automação</span><span>Dashboards</span><span>Aplicativos</span></div>
+    <div class="giant" aria-hidden="true">Dev<span>Hub</span></div>
+  </div>
+</header>
+
+<main>
+<section class="strip" aria-label="Ferramentas com que trabalhamos">
+  <div class="wrap">
+    <p>Integramos e construímos com</p>
+    <ul><li>ERPs de mercado</li><li>Power BI</li><li>WhatsApp</li><li>Google Maps</li><li>Power Automate</li><li>React</li><li>Node.js</li><li>Python</li><li>SQL</li><li>APIs REST</li></ul>
+  </div>
+</section>
+
+<section class="pratica" id="pratica">
+  <div class="wrap">
+    <div class="rh"><b>DevHub</b><span>Na prática</span></div>
+    <div class="sec-head">
+      <h2 class="t-h2">Assim fica a sua operação depois da DevHub.</h2>
+      <div class="facts">
+        <div><b class="num">52 de 52</b>lançamentos diários feitos por robô</div>
+        <div><b>Via API</b>direto do ERP para o painel</div>
+        <div><b>WhatsApp</b>cobrança automática</div>
+      </div>
+    </div>
+    <div class="hero-stage">
+      <div class="screen" role="img" aria-label="Exemplo de painel de gestão com faturamento, margem, inadimplência e vendas por centro de distribuição">
+        <div class="chrome"><i></i><i></i><i></i><div class="url">app.suaempresa.com.br/painel</div></div>
+        <div class="app">
+          <aside class="side">
+            <div class="brand">Sua<span>Empresa</span></div>
+            <a class="on" href="#topo" tabindex="-1"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Visão geral</a>
+            <a href="#topo" tabindex="-1"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>Vendas por CD</a>
+            <a href="#topo" tabindex="-1"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>Orçamento</a>
+            <a href="#topo" tabindex="-1"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-4-7.5L21 3v5h-5"/></svg>Cobrança</a>
+            <a href="#topo" tabindex="-1"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>Comissões</a>
+            <div class="sep">Automação</div>
+            <a href="#topo" tabindex="-1"><svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01"/></svg>Robôs</a>
+            <a href="#topo" tabindex="-1"><svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h5a3 3 0 0 0 3-3V8"/></svg>Rotas do dia</a>
+          </aside>
+          <div class="main">
+            <div class="topbar">
+              <h4>Visão geral</h4>
+              <div class="r"><span class="chip c-mut">Atualizado às 08:00</span><span class="chip c-info">Outubro 2026</span><span class="av" style="background:#1740D8">AD</span></div>
+            </div>
+            <div class="kpis">
+              <div class="s-card kpi"><span class="k">Faturamento</span><span class="v">R$ 1,28 mi</span><span class="d"><span class="up">+8,4%</span><svg viewBox="0 0 64 22"><polyline points="1,17 10,15 19,16 28,11 37,12 46,8 55,6 63,3" fill="none" stroke="#1740D8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg></span></div>
+              <div class="s-card kpi"><span class="k">Margem líquida</span><span class="v">31,2%</span><span class="d"><span class="up">+1,1 p.p.</span><svg viewBox="0 0 64 22"><polyline points="1,14 10,15 19,12 28,13 37,10 46,11 55,8 63,7" fill="none" stroke="#1740D8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg></span></div>
+              <div class="s-card kpi"><span class="k">Inadimplência</span><span class="v">4,2%</span><span class="d"><span class="up">−1,8 p.p.</span><svg viewBox="0 0 64 22"><polyline points="1,4 10,6 19,5 28,9 37,10 46,13 55,15 63,17" fill="none" stroke="#12805C" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg></span></div>
+              <div class="s-card kpi"><span class="k">Horas economizadas</span><span class="v">214 h</span><span class="d"><span class="s-mut">no mês</span><svg viewBox="0 0 64 22"><polyline points="1,19 10,17 19,15 28,14 37,10 46,9 55,6 63,3" fill="none" stroke="#1740D8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg></span></div>
+            </div>
+            <div class="row2">
+              <div class="s-card panel">
+                <div class="panel-h"><b>Faturamento x meta</b><div class="legend"><span><i style="background:#1740D8"></i>Realizado</span><span><i style="background:#9AA6C2"></i>Meta</span></div></div>
+                <svg class="chart" viewBox="0 0 520 190" aria-hidden="true">
+                  <defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1740D8" stop-opacity=".22"/><stop offset="1" stop-color="#1740D8" stop-opacity="0"/></linearGradient></defs>
+                  <g stroke="#E9EDF5" stroke-width="1"><line x1="40" y1="10" x2="510" y2="10"/><line x1="40" y1="63.3" x2="510" y2="63.3"/><line x1="40" y1="116.7" x2="510" y2="116.7"/><line x1="40" y1="170" x2="510" y2="170"/></g>
+                  <g fill="#8A96B2" font-size="11" font-family="Inter, sans-serif" text-anchor="end"><text x="32" y="14">1,4 mi</text><text x="32" y="67">1,2 mi</text><text x="32" y="120">1,0 mi</text><text x="32" y="174">800 mil</text></g>
+                  <path d="M50,122 L115,106 L180,114 L245,84.7 L310,92.7 L375,68.7 L440,55.3 L505,42 L505,170 L50,170 Z" fill="url(#ga)"/>
+                  <line x1="50" y1="116.7" x2="505" y2="50" stroke="#9AA6C2" stroke-width="1.8" stroke-dasharray="5 5"/>
+                  <polyline points="50,122 115,106 180,114 245,84.7 310,92.7 375,68.7 440,55.3 505,42" fill="none" stroke="#1740D8" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+                  <circle cx="505" cy="42" r="5" fill="#fff" stroke="#1740D8" stroke-width="2.6"/>
+                  <g fill="#8A96B2" font-size="11" font-family="Inter, sans-serif" text-anchor="middle"><text x="50" y="187">mar</text><text x="115" y="187">abr</text><text x="180" y="187">mai</text><text x="245" y="187">jun</text><text x="310" y="187">jul</text><text x="375" y="187">ago</text><text x="440" y="187">set</text><text x="505" y="187" fill="#101828" font-weight="600">out</text></g>
+                </svg>
+              </div>
+              <div class="s-card panel">
+                <div class="panel-h"><b>Vendas por CD</b><span class="s-mut" style="font-size:11.5px">mês</span></div>
+                <div class="rank">
+                  <div class="it"><span>CD Manaus</span><b>R$ 486 mil</b><div class="track"><span style="width:100%"></span></div></div>
+                  <div class="it"><span>CD Belém</span><b>R$ 345 mil</b><div class="track"><span style="width:71%"></span></div></div>
+                  <div class="it"><span>CD Porto Velho</span><b>R$ 243 mil</b><div class="track"><span style="width:50%"></span></div></div>
+                  <div class="it"><span>CD Boa Vista</span><b>R$ 206 mil</b><div class="track"><span style="width:42%"></span></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-extras">
+        <div class="phone" role="img" aria-label="Exemplo de cobrança automática no WhatsApp">
+          <div class="scr">
+            <div class="ph-head"><span class="av" style="background:#1FAF5A">SE</span><div><b>Sua Empresa</b><small>Conta comercial</small></div></div>
+            <div class="ph-body">
+              <span class="day">Hoje</span>
+              <div class="bub me">Olá, Auto Peças Rio Negro! O título 4821, de R$ 1.280,00, venceu há 5 dias. Segue a 2ª via atualizada.<div class="doc"><i></i>boleto-4821.pdf</div><small>09:00 ✓✓</small></div>
+              <div class="bub">Obrigado pelo aviso! Pago ainda hoje.<small>09:14</small></div>
+              <div class="bub me">Perfeito, vamos confirmar a baixa automaticamente.<small>09:14 ✓✓</small></div>
+            </div>
+          </div>
+        </div>
+        <div class="toast" role="status">
+          <span class="ic"><svg aria-hidden="true"><use href="#chk"/></svg></span>
+          <div><b>Robô de compras concluiu</b>52 de 52 solicitações lançadas no ERP em 6 minutos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cases" id="solucoes">
+  <div class="wrap">
+    <div class="rh"><b>DevHub</b><span>Sistemas em produção</span></div>
+    <div class="sec-head">
+      <h2 class="t-h2">Sistemas em produção, resolvendo gargalos reais.</h2>
+      <p class="lead">As telas abaixo usam dados de exemplo. Os sistemas originais rodam com os dados de cada cliente.</p>
+    </div>
+
+    <article class="feature">
+      <div class="shot">
+        <div class="screen" role="img" aria-label="Tela do robô mostrando 52 de 52 solicitações lançadas">
+          <div class="chrome"><i></i><i></i><i></i><div class="url">Robô de solicitações de compra</div></div>
+          <div class="s-pad">
+            <div class="topbar"><h4>Execução de hoje, 08:00</h4><span class="chip c-ok">Concluído</span></div>
+            <div class="robo">
+              <div class="s-card ring">
+                <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="50" fill="none" stroke="#EEF2FB" stroke-width="12"/><circle cx="60" cy="60" r="50" fill="none" stroke="#12805C" stroke-width="12" stroke-linecap="round" stroke-dasharray="314.2" stroke-dashoffset="0" transform="rotate(-90 60 60)"/><text x="60" y="58" text-anchor="middle" font-family="Inter, sans-serif" font-size="26" font-weight="600" fill="#101828">52</text><text x="60" y="78" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#6B7794">de 52</text></svg>
+                <div><b>Solicitações lançadas</b><div class="s-mut" style="font-size:12px">Nenhum erro</div></div>
+              </div>
+              <div style="display:grid;gap:10px;min-width:0">
+                <div class="cmp">
+                  <div class="s-card"><div class="s-mut" style="font-size:11.5px">Tempo do robô</div><div class="v">6 min</div></div>
+                  <div class="s-card"><div class="s-mut" style="font-size:11.5px">Antes, à mão</div><div class="v" style="color:#B45309">horas</div></div>
+                </div>
+                <div class="s-card steps-s">
+                  <div><span class="ck"><svg aria-hidden="true"><use href="#chk"/></svg></span><span>Ler planilha dos solicitantes</span><span class="s-mut">52 linhas</span></div>
+                  <div><span class="ck"><svg aria-hidden="true"><use href="#chk"/></svg></span><span>Validar itens e centros de custo</span><span class="s-mut">ok</span></div>
+                  <div><span class="ck"><svg aria-hidden="true"><use href="#chk"/></svg></span><span>Lançar no ERP</span><span class="s-mut">52/52</span></div>
+                  <div><span class="ck"><svg aria-hidden="true"><use href="#chk"/></svg></span><span>Enviar resumo ao comprador</span><span class="s-mut">08:06</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="txt">
+        <p class="cat">Automação</p>
+        <h3 class="t-h3">Robô de lançamento no ERP</h3>
+        <dl class="ba"><dt>Antes</dt><dd>Mais de 50 solicitações de compra por dia digitadas à mão, a partir de uma planilha.</dd><dt>Agora</dt><dd class="ag">Um robô lê a planilha, lança tudo no ERP e avisa o comprador. A equipe ganha horas todo dia.</dd></dl>
+      </div>
+    </article>
+
+    <article class="feature flip">
+      <div class="shot">
+        <div class="screen" role="img" aria-label="Tela de cobrança com régua de mensagens e lista de clientes em atraso">
+          <div class="chrome"><i></i><i></i><i></i><div class="url">Cobrança automática</div></div>
+          <div class="s-pad">
+            <div class="topbar"><h4>Régua de cobrança</h4><span class="chip c-info">R$ 48,6 mil em aberto</span></div>
+            <div class="s-card regua">
+              <div class="on"><span class="dot">1</span><b>D+1</b><span class="s-mut">Lembrete</span></div>
+              <div class="on"><span class="dot">2</span><b>D+5</b><span class="s-mut">2ª via</span></div>
+              <div><span class="dot">3</span><b>D+10</b><span class="s-mut">Negociação</span></div>
+              <div><span class="dot">4</span><b>D+15</b><span class="s-mut">Cobrador</span></div>
+            </div>
+            <div class="s-card tbl-w">
+              <table class="tbl">
+                <thead><tr><th>Cliente</th><th class="r">Valor</th><th>Atraso</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="cli"><span class="av" style="background:#1740D8">AP</span>Auto Peças Rio Negro</span></td><td class="r">R$ 1.280,00</td><td>5 dias</td><td><span class="chip c-ok">Pago</span></td></tr>
+                  <tr><td><span class="cli"><span class="av" style="background:#0E7490">OP</span>Oficina Ponta Negra</span></td><td class="r">R$ 3.450,00</td><td>7 dias</td><td><span class="chip c-warn">Respondeu</span></td></tr>
+                  <tr><td><span class="cli"><span class="av" style="background:#6D28D9">TS</span>Transportes Solimões</span></td><td class="r">R$ 8.900,00</td><td>12 dias</td><td><span class="chip c-info">Mensagem lida</span></td></tr>
+                  <tr><td><span class="cli"><span class="av" style="background:#B45309">PE</span>Posto Estrela</span></td><td class="r">R$ 2.130,00</td><td>16 dias</td><td><span class="chip c-mut">Com cobrador</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="txt">
+        <p class="cat">Integração com WhatsApp</p>
+        <h3 class="t-h3">Cobrança automática</h3>
+        <dl class="ba"><dt>Antes</dt><dd>Títulos vencidos acompanhados em relatório e cobrados um a um, quando sobrava tempo.</dd><dt>Agora</dt><dd class="ag">Os títulos saem do ERP e seguem uma régua de mensagens. O cobrador só entra quando o cliente precisa de negociação.</dd></dl>
+      </div>
+    </article>
+
+    <article class="feature">
+      <div class="shot">
+        <div class="screen" role="img" aria-label="Painel de orçamento com consumo por linha de despesa">
+          <div class="chrome"><i></i><i></i><i></i><div class="url">Controle orçamentário</div></div>
+          <div class="s-pad">
+            <div class="topbar"><h4>Orçado x realizado</h4><span class="chip c-info">Competência outubro</span></div>
+            <div class="orc">
+              <div class="s-card donut">
+                <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="48" fill="none" stroke="#EEF2FB" stroke-width="14"/><circle cx="60" cy="60" r="48" fill="none" stroke="#1740D8" stroke-width="14" stroke-dasharray="247.3 301.6" transform="rotate(-90 60 60)"/><text x="60" y="58" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="600" fill="#101828">82%</text><text x="60" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#6B7794">consumido</text></svg>
+                <div><b style="font-size:13px">R$ 338 mil</b><div class="s-mut" style="font-size:12px">de R$ 412 mil</div></div>
+              </div>
+              <div class="s-card lines">
+                <div class="ln"><span>Frota</span><div class="bar"><span style="width:72%"></span><em style="left:80%"></em></div><b>72%</b></div>
+                <div class="ln"><span>Manutenção</span><div class="bar"><span class="hot" style="width:96%"></span><em style="left:80%"></em></div><b style="color:#B45309">96%</b></div>
+                <div class="ln"><span>Pessoal</span><div class="bar"><span style="width:81%"></span><em style="left:80%"></em></div><b>81%</b></div>
+                <div class="ln"><span>Marketing</span><div class="bar"><span style="width:44%"></span><em style="left:80%"></em></div><b>44%</b></div>
+                <div class="ln"><span>Tecnologia</span><div class="bar"><span style="width:63%"></span><em style="left:80%"></em></div><b>63%</b></div>
+              </div>
+            </div>
+            <div class="s-mut" style="font-size:11.5px">A marca vertical indica o consumo esperado até hoje.</div>
+          </div>
+        </div>
+      </div>
+      <div class="txt">
+        <p class="cat">Dashboard com API</p>
+        <h3 class="t-h3">Controle orçamentário</h3>
+        <dl class="ba"><dt>Antes</dt><dd>Orçado e realizado cruzados à mão, em planilhas exportadas do ERP.</dd><dt>Agora</dt><dd class="ag">Painel por linha e competência, alimentado direto pela API do ERP. A linha que estoura aparece antes de fechar o mês.</dd></dl>
+      </div>
+    </article>
+
+    <div class="minis">
+      <article class="mini">
+        <div class="screen" role="img" aria-label="Ranking de comissões por representante">
+          <div class="chrome"><i></i><i></i><i></i><div class="url">Comissões</div></div>
+          <div class="s-pad">
+            <div class="topbar"><h4>Comissão do mês</h4><span class="chip c-ok">Fechada</span></div>
+            <div class="com">
+              <div><span class="pos">1</span><span>Ana, Região Norte</span><b>R$ 6.420</b></div>
+              <div><span class="pos">2</span><span>Bruno, Pará</span><b>R$ 5.180</b></div>
+              <div><span class="pos">3</span><span>Carla, Rondônia</span><b>R$ 4.760</b></div>
+              <div><span class="pos">4</span><span>Diego, Roraima</span><b>R$ 3.950</b></div>
+              <div><span class="pos">5</span><span>Elisa, Acre</span><b>R$ 3.210</b></div>
+            </div>
+          </div>
+        </div>
+        <h3 class="t-h4">Comissões, metas e estoque</h3>
+        <p class="small">Sistema comercial com relatórios por centro de distribuição e representante, filtros e exportação para Excel.</p>
+      </article>
+      <article class="mini">
+        <div class="screen" role="img" aria-label="Composição da margem de um produto: preço, impostos, custo, frete e margem">
+          <div class="chrome"><i></i><i></i><i></i><div class="url">Simulador de margens</div></div>
+          <div class="s-pad">
+            <div class="topbar"><h4>Produto 008, AM</h4><span class="chip c-ok">Margem 24%</span></div>
+            <svg class="wf" viewBox="0 0 300 150" aria-hidden="true">
+              <g stroke="#E9EDF5"><line x1="0" y1="20" x2="300" y2="20"/><line x1="0" y1="125" x2="300" y2="125"/></g>
+              <rect x="10" y="20" width="44" height="105" rx="4" fill="#1740D8"/>
+              <rect x="68" y="20" width="44" height="19" rx="4" fill="#D97706"/>
+              <rect x="126" y="39" width="44" height="48" rx="4" fill="#D97706"/>
+              <rect x="184" y="87" width="44" height="13" rx="4" fill="#D97706"/>
+              <rect x="242" y="100" width="44" height="25" rx="4" fill="#12805C"/>
+              <g font-family="Inter, sans-serif" font-size="10.5" fill="#6B7794" text-anchor="middle"><text x="32" y="140">Preço</text><text x="90" y="140">Impostos</text><text x="148" y="140">Custo</text><text x="206" y="140">Frete</text><text x="264" y="140">Margem</text></g>
+              <g font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#101828" text-anchor="middle"><text x="32" y="14">100</text><text x="90" y="14">−18</text><text x="148" y="33">−46</text><text x="206" y="81">−12</text><text x="264" y="94">24</text></g>
+            </svg>
+          </div>
+        </div>
+        <h3 class="t-h4">Simulador de margens</h3>
+        <p class="small">Planilha contábil com dezenas de colunas de custo, frete e impostos transformada em sistema web, com a regra fiscal de cada estado.</p>
+      </article>
+      <article class="mini">
+        <div class="screen" role="img" aria-label="Mapa com rota de entregas em seis paradas numeradas">
+          <div class="chrome"><i></i><i></i><i></i><div class="url">Rotas do dia</div></div>
+          <div class="s-pad">
+            <svg class="map" viewBox="0 0 300 130" aria-hidden="true">
+              <rect width="300" height="130" fill="#EEF1F6"/>
+              <path d="M0,104 C60,92 110,118 170,104 C220,92 260,112 300,98 L300,130 L0,130 Z" fill="#CFE0F5"/>
+              <g stroke="#FFFFFF" stroke-width="6" fill="none"><path d="M0,40 L300,52"/><path d="M70,0 L84,130"/><path d="M190,0 L176,100"/><path d="M0,78 L300,70"/></g>
+              <polyline points="26,32 80,44 112,74 182,62 236,30 268,72" fill="none" stroke="#1740D8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+              <g font-family="Inter, sans-serif" font-size="10" font-weight="700" text-anchor="middle">
+                <circle cx="26" cy="32" r="9" fill="#0B1B4D"/><text x="26" y="35.5" fill="#fff">1</text>
+                <circle cx="80" cy="44" r="9" fill="#1740D8"/><text x="80" y="47.5" fill="#fff">2</text>
+                <circle cx="112" cy="74" r="9" fill="#1740D8"/><text x="112" y="77.5" fill="#fff">3</text>
+                <circle cx="182" cy="62" r="9" fill="#1740D8"/><text x="182" y="65.5" fill="#fff">4</text>
+                <circle cx="236" cy="30" r="9" fill="#1740D8"/><text x="236" y="33.5" fill="#fff">5</text>
+                <circle cx="268" cy="72" r="9" fill="#1740D8"/><text x="268" y="75.5" fill="#fff">6</text>
+              </g>
+            </svg>
+            <div class="mapcap"><span><b>6 paradas</b> <span class="s-mut">saindo do CD</span></span><span class="num"><b>42 km</b> <span class="s-mut">3 h 10 min</span></span></div>
+          </div>
+        </div>
+        <h3 class="t-h4">Roteirizador de entregas</h3>
+        <p class="small">Os endereços do dia viram a melhor sequência de paradas, entregue em planilha ou PDF para o motorista.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="mid" aria-label="Chamada">
+  <div class="wrap">
+    <h2 class="t-h2">A sua operação tem um gargalo parecido?</h2>
+    <a class="btn btn-white wa-link" href="https://wa.me/5592994515733" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Quero um diagnóstico gratuito</a>
+  </div>
+</section>
+
+<section class="dores" id="dores">
+  <div class="wrap">
+    <div class="rh"><b>DevHub</b><span>Para quem é</span></div>
+    <div class="sec-head">
+      <h2 class="t-h2">A DevHub é para você se a sua empresa se reconhece em algum destes pontos.</h2>
+    </div>
+    <div class="dgrid">
+      <div><h3 class="t-h4">A planilha virou o sistema</h3><p class="small">O controle da empresa depende de arquivos que só uma pessoa entende e que ninguém pode apagar.</p></div>
+      <div><h3 class="t-h4">O ERP não conversa com o resto</h3><p class="small">Os dados existem, mas alguém precisa exportar, colar e conferir à mão para virar relatório ou cobrança.</p></div>
+      <div><h3 class="t-h4">A equipe digita a mesma coisa duas vezes</h3><p class="small">Pedidos, solicitações e notas passam de um lugar para outro sem automação, com erro e retrabalho.</p></div>
+      <div><h3 class="t-h4">Já teve fornecedor que prometeu e sumiu</h3><p class="small">Projeto grande, prazo longo e nada em uso. Por isso entregamos em etapas que você usa e aprova.</p></div>
+      <div><h3 class="t-h4">A operação não pode parar</h3><p class="small">Trocar de sistema está fora de cogitação. Construímos em volta do que já funciona.</p></div>
+      <div><h3 class="t-h4">Orçamento e prazo apertados</h3><p class="small">Começamos pela rotina que mais custa horas, medimos o ganho e só depois expandimos.</p></div>
+    </div>
+    <div class="dores-cta"><p>Se marcou pelo menos um, vale uma conversa.</p><a class="btn btn-blue wa-link" href="https://wa.me/5592994515733" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Falar com a DevHub</a></div>
+  </div>
+</section>
+
+<section class="process" id="processo">
+  <div class="wrap">
+    <div class="rh"><b>DevHub</b><span>Como trabalhamos</span></div>
+    <div class="sec-head">
+      <h2 class="t-h2">Do diagnóstico ao sistema rodando, em cinco etapas.</h2>
+    </div>
+    <ol class="steps">
+      <li><span class="n">1</span><h3 class="t-h4">Diagnóstico</h3><p class="small">Entendemos o processo atual, as planilhas e onde o tempo se perde. Sem custo.</p></li>
+      <li><span class="n">2</span><h3 class="t-h4">Proposta</h3><p class="small">Escopo, prazo e investimento definidos por escrito antes de começar.</p></li>
+      <li><span class="n">3</span><h3 class="t-h4">Desenvolvimento</h3><p class="small">Entregas por módulo, com a sua validação em cada etapa.</p></li>
+      <li><span class="n">4</span><h3 class="t-h4">Implantação</h3><p class="small">Colocamos no ar, migramos os dados e treinamos a equipe.</p></li>
+      <li><span class="n">5</span><h3 class="t-h4">Suporte</h3><p class="small">Acompanhamento, ajustes e evolução contínua da solução.</p></li>
+    </ol>
+    <p class="tip"><b>Comece por um processo.</b> Automatize a rotina que mais consome horas, meça o resultado e expanda a partir dele.</p>
+  </div>
+</section>
+
+<section class="svcnav" id="servicos">
+  <div class="wrap">
+    <div class="rh"><b>DevHub</b><span>Serviços</span></div>
+    <div class="sec-head">
+      <h2 class="t-h2">Escolha por onde começar.</h2>
+      <p class="lead">Se não souber qual serviço precisa, comece pelo diagnóstico. Em uma conversa a gente mapeia a rotina e indica o caminho.</p>
+    </div>
+    <div class="scards">
+      <a class="scard first" href="#contato"><span class="tagc">Recomendado para começar</span><h3 class="t-h4">Diagnóstico gratuito</h3><p class="small">Para quem sente que perde tempo, mas não sabe onde. Saímos com a lista do que vale automatizar primeiro.</p></a>
+      <a class="scard" href="#exemplos"><h3 class="t-h4">Sistemas sob medida</h3><p class="small">Para processos que cresceram além da planilha: comissões, metas, cobrança, orçamento e estoque.</p></a>
+      <a class="scard" href="#exemplos"><h3 class="t-h4">Automação e integrações</h3><p class="small">Para quem digita no ERP o dia inteiro ou precisa ligar o ERP ao WhatsApp, planilhas e outros sistemas.</p></a>
+      <a class="scard" href="#exemplos"><h3 class="t-h4">Dashboards e dados</h3><p class="small">Para gestores que esperam o relatório do mês. Indicadores atualizados todo dia, no Power BI ou na web.</p></a>
+      <a class="scard" href="#exemplos"><h3 class="t-h4">Sites e aplicativos</h3><p class="small">Para gerar contatos e levar o sistema para o celular de vendedores, motoristas e clientes.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="exs" id="exemplos">
+  <div class="wrap">
+    <div class="rh"><b>DevHub</b><span>Exemplos práticos</span></div>
+    <div class="sec-head">
+      <h2 class="t-h2">Um exemplo de cada serviço, como ele fica na sua empresa.</h2>
+      <p class="lead">Telas com dados de exemplo, iguais às que entregamos para os clientes.</p>
+    </div>
+    <div class="xg">
+      <h3 class="t-h3 xg-t">Presença digital, na prática</h3>
+      <div class="x-ex2">
+    <div class="x-exc">
+      <div class="x-shot">
+        <div class="x-win"><div class="x-chr"><i></i><i></i><i></i><span class="x-url">transnorte.com.br</span></div>
+          <div class="x-site">
+            <div class="x-snav"><b>Trans<span>Norte</span></b><span>Serviços</span><span>Rastreio</span><span>Contato</span><em>Pedir orçamento</em></div>
+            <div class="x-shero">
+              <div><div class="x-sh1">Frete rápido e seguro para toda a Região Norte</div><div class="x-sp">Coleta em até 24 h e rastreio em tempo real.</div><div class="x-swa">Orçamento pelo WhatsApp</div></div>
+              <div class="x-strack"><small>Rastreie sua carga</small><div class="x-inp">Código da nota</div><div class="x-bt">Consultar</div><div class="x-st"><i></i>Em trânsito: Manaus → Belém</div></div>
+            </div>
+            <div class="x-stiles"><div><b>Carga fracionada</b><span>A partir de 1 volume</span></div><div><b>Lotação</b><span>Caminhão dedicado</span></div><div><b>Armazenagem</b><span>CD próprio</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="x-ext"><span class="x-sv">Sites profissionais</span><h3 class="x-h3">Site de transportadora que vira orçamento</h3><p class="x-small">Página rápida no celular, com rastreio de carga e botão que abre o WhatsApp comercial com a mensagem pronta.</p></div>
+    </div>
+    <div class="x-exc">
+      <div class="x-shot x-phones">
+        <div class="x-ph"><div class="x-phs">
+          <div class="x-aph"><small>Olá, Ana</small><b>Meta de outubro</b></div>
+          <div class="x-aring"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="32" fill="none" stroke="#EEF2FB" stroke-width="9"/><circle cx="40" cy="40" r="32" fill="none" stroke="#1740D8" stroke-width="9" stroke-linecap="round" stroke-dasharray="156.8 201" transform="rotate(-90 40 40)"/><text x="40" y="44" text-anchor="middle" font-size="15" font-weight="600" fill="#101828" font-family="Inter">78%</text></svg><div><b>R$ 93,6 mil</b><small>de R$ 120 mil</small></div></div>
+          <div class="x-alist"><small>Pedidos de hoje</small><div><span>Posto Estrela</span><b>R$ 4.320</b></div><div><span>Oficina Ponta Negra</span><b>R$ 1.870</b></div><div><span>Auto Peças Rio Negro</span><b>R$ 2.540</b></div></div>
+          <div class="x-atab"><span class="x-on">Início</span><span>Pedidos</span><span>Clientes</span></div>
+        </div></div>
+        <div class="x-ph x-ph2"><div class="x-phs">
+          <div class="x-aph"><small>Novo pedido</small><b>Posto Estrela</b></div>
+          <div class="x-aform"><div><small>Produto</small><span>Óleo 15W40, balde 20 L</span></div><div><small>Quantidade</small><span>12</span></div><div><small>Preço sugerido</small><span>R$ 360,00</span></div><div class="x-mg"><small>Margem</small><span>27%</span></div></div>
+          <div class="x-abtn">Enviar pedido</div>
+          <div class="x-atab"><span>Início</span><span class="x-on">Pedidos</span><span>Clientes</span></div>
+        </div></div>
+      </div>
+      <div class="x-ext"><span class="x-sv">Aplicativos mobile</span><h3 class="x-h3">App do vendedor externo</h3><p class="x-small">Meta do mês, pedidos do dia e novo pedido com preço e margem calculados na hora, direto no celular.</p></div>
+    </div>
+  </div>
+    </div>
+    <div class="xg">
+      <h3 class="t-h3 xg-t">Sistemas e integrações, na prática</h3>
+      <div class="x-ex2">
+    <div class="x-exc">
+      <div class="x-shot">
+        <div class="x-win"><div class="x-chr"><i></i><i></i><i></i><span class="x-url">sistema.suaempresa.com.br/metas</span></div>
+          <div class="x-sys">
+            <div class="x-sside"><b>Sua<span>Empresa</span></b><span class="x-on">Metas</span><span>Comissões</span><span>Estoque</span><span>Cobrança</span><span>Relatórios</span></div>
+            <div class="x-smain">
+              <div class="x-stop"><b>Metas por representante</b><span class="x-chip x-c-info">Outubro</span></div>
+              <table class="x-tb"><thead><tr><th>Representante</th><th>Meta</th><th>Atingido</th><th></th></tr></thead><tbody>
+                <tr><td>Ana, Norte</td><td>R$ 120 mil</td><td><div class="x-tr"><span style="width:78%"></span></div></td><td><span class="x-chip x-c-info">78%</span></td></tr>
+                <tr><td>Bruno, Pará</td><td>R$ 95 mil</td><td><div class="x-tr"><span style="width:104%"></span></div></td><td><span class="x-chip x-c-ok">104%</span></td></tr>
+                <tr><td>Carla, Rondônia</td><td>R$ 80 mil</td><td><div class="x-tr"><span style="width:91%"></span></div></td><td><span class="x-chip x-c-info">91%</span></td></tr>
+                <tr><td>Diego, Roraima</td><td>R$ 70 mil</td><td><div class="x-tr"><span class="x-w" style="width:52%"></span></div></td><td><span class="x-chip x-c-warn">52%</span></td></tr>
+                <tr><td>Elisa, Acre</td><td>R$ 60 mil</td><td><div class="x-tr"><span style="width:86%"></span></div></td><td><span class="x-chip x-c-info">86%</span></td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="x-ext"><span class="x-sv">Sistemas web completos</span><h3 class="x-h3">Gestão comercial de metas e comissões</h3><p class="x-small">Cada representante acompanha a própria meta, a comissão é calculada da venda e o gestor vê quem precisa de apoio.</p></div>
+    </div>
+    <div class="x-exc">
+      <div class="x-shot x-integ">
+        <div class="x-win x-erp"><div class="x-chr"><i></i><i></i><i></i><span class="x-url">ERP: títulos vencidos</span></div>
+          <div class="x-erpl"><div><span>4821</span><span>Auto Peças Rio Negro</span><b>R$ 1.280</b></div><div><span>4830</span><span>Oficina Ponta Negra</span><b>R$ 3.450</b></div><div><span>4844</span><span>Transportes Solimões</span><b>R$ 8.900</b></div><div><span>4852</span><span>Posto Estrela</span><b>R$ 2.130</b></div></div>
+        </div>
+        <div class="x-flowa"><div class="x-hub">DevHub</div><small>a cada manhã, 09:00</small></div>
+        <div class="x-ph x-ph3"><div class="x-phs x-wa">
+          <div class="x-wah"><span class="x-av">SE</span><b>Sua Empresa</b></div>
+          <div class="x-wab"><div class="x-bub x-me">Olá! O título 4821, de R$ 1.280,00, venceu há 5 dias. Segue a 2ª via.<div class="x-doc"><i></i>boleto-4821.pdf</div></div><div class="x-bub">Pago hoje, obrigado!</div></div>
+        </div></div>
+      </div>
+      <div class="x-ext"><span class="x-sv">Integrações entre sistemas</span><h3 class="x-h3">Do ERP para o WhatsApp do cliente</h3><p class="x-small">Os títulos vencidos saem do ERP todo dia e viram mensagens com boleto anexo. Quando o cliente paga, a baixa volta para o sistema.</p></div>
+    </div>
+  </div>
+    </div>
+    <div class="xg">
+      <h3 class="t-h3 xg-t">Logística e automação, na prática</h3>
+      <div class="x-ex2">
+    <div class="x-exc">
+      <div class="x-shot">
+        <div class="x-win"><div class="x-chr"><i></i><i></i><i></i><span class="x-url">Rotas do dia: veículo 01</span></div>
+          <div class="x-route">
+            <svg viewBox="0 0 300 220" class="x-map">
+              <rect width="300" height="220" fill="#EEF1F6"/>
+              <path d="M0,170 C70,150 120,190 180,168 C230,150 270,178 300,160 L300,220 L0,220 Z" fill="#CFE0F5"/>
+              <g stroke="#fff" stroke-width="7" fill="none"><path d="M0,60 L300,78"/><path d="M80,0 L96,220"/><path d="M200,0 L186,160"/><path d="M0,122 L300,112"/></g>
+              <polyline points="30,48 88,64 122,118 190,100 246,44 270,118" fill="none" stroke="#1740D8" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+              <g font-family="Inter" font-size="11" font-weight="700" text-anchor="middle">
+                <circle cx="30" cy="48" r="11" fill="#0B1B4D"/><text x="30" y="52" fill="#fff">1</text>
+                <circle cx="88" cy="64" r="11" fill="#1740D8"/><text x="88" y="68" fill="#fff">2</text>
+                <circle cx="122" cy="118" r="11" fill="#1740D8"/><text x="122" y="122" fill="#fff">3</text>
+                <circle cx="190" cy="100" r="11" fill="#1740D8"/><text x="190" y="104" fill="#fff">4</text>
+                <circle cx="246" cy="44" r="11" fill="#1740D8"/><text x="246" y="48" fill="#fff">5</text>
+                <circle cx="270" cy="118" r="11" fill="#1740D8"/><text x="270" y="122" fill="#fff">6</text>
+              </g>
+            </svg>
+            <div class="x-stops"><div class="x-sum"><b>42 km</b><span>3 h 10 min</span></div>
+              <div><i class="x-d">1</i><span>Saída do CD</span><em>07:30</em></div><div><i>2</i><span>Posto Estrela</span><em>07:52</em></div><div><i>3</i><span>Oficina Ponta Negra</span><em>08:31</em></div><div><i>4</i><span>Auto Peças Rio Negro</span><em>09:10</em></div><div><i>5</i><span>Transportes Solimões</span><em>09:48</em></div><div><i>6</i><span>Mercadinho Bom Preço</span><em>10:40</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="x-ext"><span class="x-sv">Roteirização de entregas</span><h3 class="x-h3">Rota do dia calculada no Google Maps</h3><p class="x-small">A lista de entregas sai da planilha, a ordem das paradas é otimizada e o motorista recebe a rota com horário previsto em PDF.</p></div>
+    </div>
+    <div class="x-exc">
+      <div class="x-shot">
+        <div class="x-win"><div class="x-chr"><i></i><i></i><i></i><span class="x-url">Robô: solicitações de compra</span></div>
+          <div class="x-robo">
+            <div class="x-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="48" fill="none" stroke="#EEF2FB" stroke-width="12"/><circle cx="60" cy="60" r="48" fill="none" stroke="#12805C" stroke-width="12" stroke-linecap="round" stroke-dasharray="301.6" transform="rotate(-90 60 60)"/><text x="60" y="60" text-anchor="middle" font-family="Inter" font-size="26" font-weight="600" fill="#101828">52</text><text x="60" y="78" text-anchor="middle" font-family="Inter" font-size="11" fill="#6B7794">de 52</text></svg><b>Lançadas no ERP</b><span class="x-chip x-c-ok">Concluído em 6 min</span></div>
+            <div class="x-rsteps">
+              <div><i class="x-ck">✓</i><span>Ler planilha dos solicitantes</span><em>52 linhas</em></div>
+              <div><i class="x-ck">✓</i><span>Validar itens e centros de custo</span><em>ok</em></div>
+              <div><i class="x-ck">✓</i><span>Lançar cada solicitação no ERP</span><em>52/52</em></div>
+              <div><i class="x-ck">✓</i><span>Conferir números gerados</span><em>ok</em></div>
+              <div><i class="x-ck">✓</i><span>Enviar resumo ao comprador</span><em>08:06</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="x-ext"><span class="x-sv">Automação de tarefas</span><h3 class="x-h3">Robô que lança compras no ERP</h3><p class="x-small">O que levava horas de digitação acontece sozinho toda manhã, com conferência e resumo enviado ao comprador.</p></div>
+    </div>
+  </div>
+    </div>
+    <div class="xg">
+      <h3 class="t-h3 xg-t">Dados para decidir, na prática</h3>
+      <div class="x-ex2">
+    <div class="x-exc">
+      <div class="x-shot">
+        <div class="x-win"><div class="x-chr"><i></i><i></i><i></i><span class="x-url">Painel de vendas por CD</span></div>
+          <div class="x-dash">
+            <div class="x-kp"><div><small>Faturamento</small><b>R$ 1,28 mi</b><em>+8,4%</em></div><div><small>Margem líquida</small><b>31,2%</b><em>+1,1 p.p.</em></div><div><small>Ticket médio</small><b>R$ 2.940</b><em>+3,2%</em></div></div>
+            <div class="x-dg">
+              <div class="x-dch"><small>Faturamento x meta</small>
+                <svg viewBox="0 0 300 120"><defs><linearGradient id="x-dga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1740D8" stop-opacity=".22"/><stop offset="1" stop-color="#1740D8" stop-opacity="0"/></linearGradient></defs>
+                  <g stroke="#E9EDF5"><line x1="0" y1="10" x2="300" y2="10"/><line x1="0" y1="55" x2="300" y2="55"/><line x1="0" y1="100" x2="300" y2="100"/></g>
+                  <path d="M6,78 L48,66 L90,72 L132,50 L174,56 L216,38 L258,28 L294,18 L294,100 L6,100 Z" fill="url(#x-dga)"/>
+                  <line x1="6" y1="74" x2="294" y2="26" stroke="#9AA6C2" stroke-width="1.6" stroke-dasharray="4 4"/>
+                  <polyline points="6,78 48,66 90,72 132,50 174,56 216,38 258,28 294,18" fill="none" stroke="#1740D8" stroke-width="2.4" stroke-linejoin="round"/>
+                  <circle cx="294" cy="18" r="4" fill="#fff" stroke="#1740D8" stroke-width="2.4"/>
+                  <g font-family="Inter" font-size="9" fill="#8A96B2" text-anchor="middle"><text x="6" y="116" text-anchor="start">mar</text><text x="132" y="116">jun</text><text x="294" y="116" text-anchor="end">out</text></g>
+                </svg></div>
+              <div class="x-drk"><small>Vendas por CD</small><div><span>Manaus</span><b>486</b><i style="width:100%"></i></div><div><span>Belém</span><b>345</b><i style="width:71%"></i></div><div><span>Porto Velho</span><b>243</b><i style="width:50%"></i></div><div><span>Boa Vista</span><b>206</b><i style="width:42%"></i></div><small class="x-u">R$ mil no mês</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="x-ext"><span class="x-sv">Dashboards profissionais</span><h3 class="x-h3">Vendas por CD todo dia às 8h</h3><p class="x-small">Faturamento, margem e ranking dos centros de distribuição atualizados direto do ERP, no Power BI ou na web.</p></div>
+    </div>
+    <div class="x-exc">
+      <div class="x-shot">
+        <div class="x-win"><div class="x-chr"><i></i><i></i><i></i><span class="x-url">Simulador de margens</span></div>
+          <div class="x-sim">
+            <div class="x-sform"><div><small>Produto</small><span>008, Óleo 15W40 20 L</span></div><div><small>Estado de destino</small><span>Amazonas</span></div><div><small>Preço de venda</small><span>R$ 360,00</span></div><div><small>Frete por unidade</small><span>R$ 43,20</span></div><div class="x-res"><small>Margem líquida</small><b>24%</b></div></div>
+            <svg viewBox="0 0 250 190" class="x-wf">
+              <g stroke="#E9EDF5"><line x1="0" y1="24" x2="250" y2="24"/><line x1="0" y1="164" x2="250" y2="164"/></g>
+              <rect x="6" y="24" width="38" height="140" rx="4" fill="#1740D8"/>
+              <rect x="54" y="24" width="38" height="25" rx="4" fill="#D97706"/>
+              <rect x="102" y="49" width="38" height="65" rx="4" fill="#D97706"/>
+              <rect x="150" y="114" width="38" height="17" rx="4" fill="#D97706"/>
+              <rect x="198" y="131" width="38" height="33" rx="4" fill="#12805C"/>
+              <g font-family="Inter" font-size="9.5" fill="#6B7794" text-anchor="middle"><text x="25" y="180">Preço</text><text x="73" y="180">Impostos</text><text x="121" y="180">Custo</text><text x="169" y="180">Frete</text><text x="217" y="180">Margem</text></g>
+              <g font-family="Inter" font-size="10.5" font-weight="600" fill="#101828" text-anchor="middle"><text x="25" y="18">100</text><text x="73" y="18">−18</text><text x="121" y="43">−46</text><text x="169" y="108">−12</text><text x="217" y="125">24</text></g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="x-ext"><span class="x-sv">Análise de dados e simuladores</span><h3 class="x-h3">Margem real por produto e estado</h3><p class="x-small">A planilha do contador vira um simulador: escolha produto, estado e preço e veja impostos, custo, frete e margem na hora.</p></div>
+    </div>
+  </div>
+    </div>
+  </div>
+</section>
+
+<section class="calc" id="investimento">
+  <div class="wrap">
+    <div class="rh"><b>DevHub</b><span>Investimento</span></div>
+    <div class="inv">
+      <div class="sec-head">
+        <h2 class="t-h2">Quanto custa um projeto?</h2>
+        <p class="lead">O valor depende do tamanho do processo. Depois do diagnóstico você recebe uma proposta com escopo, prazo e preço fechados, sem surpresa no meio do caminho.</p>
+      </div>
+      <div class="drivers">
+        <h3 class="t-h4">O que define o investimento</h3>
+        <ul>
+          <li><b>Quantidade de telas e regras</b>Um robô pontual custa bem menos que um sistema com vários módulos.</li>
+          <li><b>Integrações</b>ERP com API pronta é mais simples do que sistemas que precisam de robô para ler e lançar.</li>
+          <li><b>Volume de dados e usuários</b>Quantas pessoas usam e quantos registros passam por dia.</li>
+          <li><b>Prazo</b>Começar pelo módulo de maior retorno reduz o primeiro investimento.</li>
+        </ul>
+      </div>
+    </div>
+    <h3 class="t-h3 calc-t">Antes de pensar no custo, veja quanto o trabalho manual já custa hoje.</h3>
+    <div class="box">
+      <form class="in" id="calc-form" novalidate>
+        <div class="field">
+          <label for="min">Tempo por pessoa, por dia <output id="min-o" for="min">1 h 30 min</output></label>
+          <small>Digitação, conferência, cópia entre planilhas e sistemas.</small>
+          <input type="range" id="min" min="10" max="480" step="10" value="90">
+        </div>
+        <div class="field">
+          <label for="ppl">Pessoas que fazem essa rotina <output id="ppl-o" for="ppl">3</output></label>
+          <input type="range" id="ppl" min="1" max="30" step="1" value="3">
+        </div>
+        <div class="field">
+          <label for="cost">Custo da hora de trabalho <output id="cost-o" for="cost">R$ 35</output></label>
+          <small>Salário mais encargos, dividido pelas horas do mês.</small>
+          <input type="range" id="cost" min="15" max="150" step="5" value="35">
+        </div>
+        <div class="field">
+          <label for="auto">Parte que dá para automatizar <output id="auto-o" for="auto">70%</output></label>
+          <input type="range" id="auto" min="20" max="100" step="5" value="70">
+        </div>
+      </form>
+      <div class="out" aria-live="polite">
+        <div>
+          <div class="big" id="r-hours">69 h</div>
+          <p class="lbl">por mês que a equipe pode dedicar a outro trabalho</p>
+        </div>
+        <div class="row">
+          <div><b id="r-month">R$ 2.426</b><p class="lbl">economia estimada por mês</p></div>
+          <div><b id="r-year">R$ 29.106</b><p class="lbl">em um ano</p></div>
+        </div>
+        <p class="note">Considera 22 dias úteis por mês.</p>
+        <a class="btn btn-white" id="calc-wa" href="https://wa.me/5592994515733" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Enviar este cálculo no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="rh"><b>DevHub</b><span>Por que a DevHub</span></div>
+    <div class="sec-head">
+      <h2 class="t-h2">Quem entende do negócio programa melhor.</h2>
+      <p class="lead">A DevHub nasceu dentro da operação. Conectamos o ERP ao resto da empresa, eliminamos digitação manual e transformamos planilhas soltas em sistemas confiáveis. Quem desenha a solução é quem programa.</p>
+    </div>
+    <div class="grid">
+      <div><h3 class="t-h3">Falamos a língua da operação</h3><p class="small">Margem, comissão, estoque e orçamento fazem parte do nosso dia a dia. A solução nasce do processo, não do código.</p></div>
+      <div><h3 class="t-h3">Sob medida, sem engessar</h3><p class="small">Construímos o que a sua empresa precisa e conectamos ao que ela já usa, começando pelo ERP.</p></div>
+      <div><h3 class="t-h3">Um parceiro de ponta a ponta</h3><p class="small">Site, sistema, integração, automação e dashboard com o mesmo time. Sem empurra-empurra entre fornecedores.</p></div>
+    </div>
+    <div class="promise">
+      <div><b>Escopo e preço fechados</b>Você sabe o que vai receber e quanto vai pagar antes do primeiro dia.</div>
+      <div><b>Entregas por etapa</b>Cada módulo é validado por você antes de seguir para o próximo.</div>
+      <div><b>Seus dados são seus</b>Código, acessos e dados ficam com a sua empresa.</div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="duvidas">
+  <div class="wrap">
+    <div class="rh"><b>DevHub</b><span>Dúvidas frequentes</span></div>
+    <div class="faq-g">
+    <div class="sec-head">
+      <h2 class="t-h2">Antes de você perguntar.</h2>
+    </div>
+    <div>
+      <details open><summary>Com quem eu falo na primeira conversa?</summary><p>Com quem vai desenhar e programar a solução. Nada de passar por vendedor e depois explicar tudo de novo para o time técnico.</p></details>
+      <details><summary>Preciso trocar o meu ERP?</summary><p>Não. Trabalhamos em cima do sistema que você já usa, por API quando ela existe e por robô quando não existe. O ERP continua sendo a base, e a DevHub cuida do que está em volta.</p></details>
+      <details><summary>Quanto custa um projeto?</summary><p>Depende do tamanho do processo. Por isso o primeiro passo é um diagnóstico gratuito. Depois dele você recebe uma proposta com escopo, prazo e valor fechados.</p></details>
+      <details><summary>Quanto tempo leva?</summary><p>Uma automação pontual costuma ficar pronta em poucas semanas. Sistemas maiores são entregues em módulos, então você começa a usar a primeira parte antes do projeto inteiro terminar.</p></details>
+      <details><summary>O sistema fica com a minha empresa?</summary><p>Sim. Código, acessos e dados pertencem à sua empresa. Você não fica preso a nós para continuar usando o que foi construído.</p></details>
+      <details><summary>Vocês usam inteligência artificial?</summary><p>Sim, onde ela ajuda de verdade: para acelerar o desenvolvimento e em automações que leem documentos ou classificam mensagens. Cada entrega passa por revisão e teste antes de ir para a sua equipe.</p></details>
+      <details><summary>Quando a DevHub diz não?</summary><p>Quando o problema se resolve sem software, ou quando uma ferramenta pronta atende melhor e mais barato. Nesses casos a gente fala no diagnóstico.</p></details>
+      <details><summary>Vocês dão suporte depois da entrega?</summary><p>Sim. Acompanhamos o uso, fazemos ajustes e evoluímos a solução conforme a operação muda.</p></details>
+      <details><summary>Atendem empresas de outras cidades?</summary><p>Sim. O diagnóstico, o desenvolvimento e o treinamento podem ser feitos de forma remota.</p></details>
+    </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="cta" id="contato">
+  <div class="wrap">
+    <div class="rh"><b>DevHub</b><span>Contato</span></div>
+    <h2 class="t-h1">Qual rotina da sua empresa você gostaria de nunca mais fazer à mão?</h2>
+    <p class="lead">Agende um diagnóstico gratuito com quem vai desenvolver. Em uma conversa curta mapeamos a rotina e mostramos o que pode ser automatizado.</p>
+    <div class="row">
+      <a class="btn btn-white wa-link" href="https://wa.me/5592994515733" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Quero um diagnóstico gratuito</a>
+      <div class="phone-num"><span id="phone">(92) 99451-5733</span><button type="button" id="copy">Copiar número</button></div>
+    </div>
+    <div class="contatos">
+      <div><span class="k">WhatsApp</span><span class="v num">(92) 99451-5733</span></div>
+      <div><span class="k">E-mail</span><a class="v" href="mailto:comercial@devhub.lat">comercial@devhub.lat</a></div>
+      <div><span class="k">Site</span><span class="v">devhub.lat</span></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <a class="logo" href="#topo" aria-label="DevHub, voltar ao topo"><svg class="mk" viewBox="34 34 132 132" aria-hidden="true"><g fill="currentColor"><rect x="44" y="44" width="34" height="34" rx="9"/><rect x="83" y="44" width="34" height="34" rx="9"/><rect x="44" y="83" width="34" height="34" rx="9"/><rect x="122" y="83" width="34" height="34" rx="17"/><rect x="44" y="122" width="34" height="34" rx="9"/><rect x="83" y="122" width="34" height="34" rx="9"/></g><path d="M117 61 Q139 61 139 83 M117 139 Q139 139 139 117" stroke="currentColor" stroke-width="10" fill="none" stroke-linecap="round"/><rect class="nd" x="83" y="83" width="34" height="34" rx="17"/></svg><span>Dev<span class="hub">Hub</span></span></a>
+        <p>Sites, sistemas, integrações, automações e dashboards sob medida.</p>
+      </div>
+      <nav aria-label="Serviços"><h3>Serviços</h3><a href="#servicos">Diagnóstico gratuito</a><a href="#exemplos">Sistemas sob medida</a><a href="#exemplos">Automação e integrações</a><a href="#exemplos">Dashboards e dados</a><a href="#exemplos">Sites e aplicativos</a></nav>
+      <nav aria-label="Empresa"><h3>DevHub</h3><a href="#solucoes">Sistemas em produção</a><a href="#processo">Como trabalhamos</a><a href="#investimento">Investimento</a><a href="#duvidas">Dúvidas</a></nav>
+      <div class="fcontact"><h3>Contato</h3><span>WhatsApp (92) 99451-5733</span><span>comercial@devhub.lat</span><span>devhub.lat</span></div>
+    </div>
+    <div class="flegal"><span>© 2026 DevHub</span><span>CNPJ 60.424.045/0001-15</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var WA='https://wa.me/5592994515733?text=';
+  var base='Olá, DevHub! Vi o site e quero agendar um diagnóstico gratuito.';
+  document.querySelectorAll('.wa-link').forEach(function(a){a.href=WA+encodeURIComponent(base)});
+  var $=function(id){return document.getElementById(id)};
+  var brl=function(v){return 'R$ '+Math.round(v).toLocaleString('pt-BR')};
+  var dur=function(m){var h=Math.floor(m/60),r=m%60;return h?(h+' h'+(r?' '+r+' min':'')):(r+' min')};
+  function calc(){
+    var m=+$('min').value,p=+$('ppl').value,c=+$('cost').value,a=+$('auto').value/100;
+    $('min-o').textContent=dur(m); $('ppl-o').textContent=p; $('cost-o').textContent='R$ '+c; $('auto-o').textContent=Math.round(a*100)+'%';
+    var h=m/60*p*22*a, mo=h*c;
+    $('r-hours').textContent=Math.round(h).toLocaleString('pt-BR')+' h';
+    $('r-month').textContent=brl(mo); $('r-year').textContent=brl(mo*12);
+    var t='Olá, DevHub! Fiz a conta no site: '+p+' pessoa(s) gastam '+dur(m)+' por dia em uma rotina manual. A estimativa deu '+Math.round(h)+' horas por mês e '+brl(mo*12)+' por ano. Quero um diagnóstico gratuito.';
+    $('calc-wa').href=WA+encodeURIComponent(t);
+  }
+  ['min','ppl','cost','auto'].forEach(function(id){$(id).addEventListener('input',calc)});
+  $('calc-form').addEventListener('submit',function(e){e.preventDefault()});
+  calc();
+  $('copy').addEventListener('click',function(){
+    var b=this,done=function(){b.textContent='Número copiado';setTimeout(function(){b.textContent='Copiar número'},2000)};
+    var sel=function(){var r=document.createRange();r.selectNodeContents($('phone'));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Número selecionado'};
+    try{navigator.clipboard.writeText('92994515733').then(done,sel)}catch(e){sel()}
+  });
+})();
+</script>
+
+</body>
+</html>

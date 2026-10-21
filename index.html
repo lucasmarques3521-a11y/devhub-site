@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>DevHub | Sistemas, automações e dashboards sob medida</title>
 <meta name="description" content="A DevHub cria sites, sistemas, integrações com ERP, automações e dashboards sob medida. Diagnóstico gratuito pelo WhatsApp (92) 99451-5733.">
-<meta name="theme-color" content="#1740D8">
+<meta name="theme-color" content="#071230">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:title" content="DevHub | Sistemas, automações e dashboards sob medida">
@@ -584,6 +584,86 @@ footer .wrap{display:block}
 @media (max-width:1000px){.scards{grid-template-columns:repeat(2,1fr)}.scard.first{grid-column:1/-1}}
 @media (max-width:900px){.dgrid{grid-template-columns:1fr 1fr}.inv{grid-template-columns:1fr;gap:28px}.fgrid{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.dgrid,.scards{grid-template-columns:1fr}.mid .btn,.dores-cta .btn{width:100%}.fgrid{grid-template-columns:1fr}.strip ul{gap:8px 18px;font-size:15px}}
+
+/* ===== v8: tema azul-escuro imersivo + formulário fixo ===== */
+:root:root:root{--bg:#071230;--bg-alt:#0E1C4A;--fg:#EEF2FF;--muted:#A9B6D6;--line:rgba(157,181,255,.16);--card:#0C1A45;--accent-fg:#9DB5FF;--band:#1740D8;--dark:#050C24;color-scheme:dark}
+body{background:radial-gradient(900px 520px at 12% -6%,rgba(23,64,216,.55),transparent 70%),radial-gradient(700px 500px at 100% 30%,rgba(23,64,216,.18),transparent 70%),linear-gradient(180deg,#0A1A4A 0%,#071230 38%,#060E26 100%) fixed;background-color:#071230}
+body::before{background:#0A1A4A}
+.nav{background:rgba(7,18,48,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.shell{max-width:1320px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));display:grid;grid-template-columns:minmax(0,1fr) 380px;grid-template-areas:"hero lead" "main lead";column-gap:48px}
+.shell>.hero{grid-area:hero}.shell>main{grid-area:main;min-width:0}.shell>.lead{grid-area:lead}
+.shell .wrap{max-width:none;padding-left:0;padding-right:0}
+.hero,.strip,.pratica,.cases,.mid,.dores,.process,.svcnav,.exs,.calc,.why,.faq,#integracao{background:transparent}
+.hero{padding-block:64px 24px}
+.cover-top{grid-template-columns:1fr}.cover-top .tag,.cover-r{grid-column:1/-1}
+.cover-top .tag{font-size:clamp(36px,4.6vw,58px);font-weight:600;line-height:1.05;letter-spacing:-.034em}
+.cover-top .tag .kick{display:block;font-size:15px;font-weight:600;letter-spacing:0;line-height:1.4;color:var(--ceu);margin-bottom:18px}
+.cover-r{max-width:62ch}
+.cover-list{justify-content:flex-start;gap:10px;margin-top:36px;padding-top:0;border-top:0}
+.cover-list span{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-size:14px}
+section{padding-block:72px}
+.rh{color:var(--muted)}.rh b{color:var(--fg)}
+.strip{padding-block:22px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.03)}
+.strip .wrap{padding-inline:24px}
+.strip ul{opacity:.85}
+.pratica{padding-bottom:120px}
+.cases .feature{grid-template-columns:1fr;gap:28px}
+.cases .feature.flip .shot{order:0}
+.cases .feature .txt{max-width:64ch}
+.minis{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;grid-template-columns:none;scrollbar-color:#1740D8 transparent}
+.mini{flex:0 0 min(340px,82%);scroll-snap-align:start}
+.mid{border:1px solid var(--line);border-radius:18px;background:linear-gradient(120deg,rgba(23,64,216,.35),rgba(23,64,216,.08));padding-block:40px}
+.mid .wrap{padding-inline:32px}
+.dores-cta,.promise div,.svc .ex{background:rgba(255,255,255,.04)}
+.steps{grid-template-columns:1fr;gap:14px}
+.steps li,.steps li:last-child{display:grid;grid-template-columns:64px 1fr;column-gap:20px;row-gap:4px;align-items:start;padding:22px 24px;border:1px solid var(--line);border-top:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.035)}
+.steps .n{grid-row:span 3;width:64px;height:64px;border-radius:14px;background:#1740D8;display:grid;place-items:center;margin:0;font-size:0}
+.steps .n svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.steps .sn{font-size:13px;font-weight:600;color:var(--ceu)}
+.scards{grid-template-columns:repeat(2,1fr)}
+.scard{background:rgba(255,255,255,.04)}
+.scard.first{grid-row:auto;grid-column:1/-1}
+.flow{grid-template-columns:1fr}.flow .arrow{width:2px;height:28px;justify-self:center}.flow .arrow::after{right:auto;left:-5px;top:auto;bottom:-1px;border-left:6px solid transparent;border-right:6px solid transparent;border-top:9px solid var(--azul);border-bottom:0}
+.node,.outs div{background:rgba(255,255,255,.04)}
+.faq-g{grid-template-columns:1fr;gap:24px}
+.faq details{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:10px}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+.calc .box{background:rgba(255,255,255,.04)}
+.x-ex2{grid-template-columns:1fr}
+.cta{background:linear-gradient(120deg,#1740D8,#0F2C9E)}
+footer{background:#040A1E}
+/* formulário */
+.lead{align-self:start;position:sticky;top:calc(env(safe-area-inset-top,0px) + 82px);padding-top:36px}
+.lead-card{max-height:calc(100vh - 100px);overflow:auto}
+@media (max-height:820px) and (min-width:1101px){#lead-form label{margin-top:4px}#lead-form input,#lead-form select,#lead-form textarea{padding:8px 11px}#lead-form textarea{min-height:52px}.lead-card{padding:20px}.lead-sub{display:none}}
+.lead-card{background:#fff;color:#101828;border-radius:18px;padding:26px 24px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.lead-card h2{font-size:24px;letter-spacing:-.02em;color:#0B1B4D}
+.lead-sub{font-size:14px;line-height:1.5;color:#56637E;margin-top:6px}
+#lead-form{display:grid;gap:4px;margin-top:16px}
+#lead-form label{font-size:13px;font-weight:600;color:#0B1B4D;margin-top:8px}
+#lead-form input,#lead-form select,#lead-form textarea{font:15px/1.4 var(--font);color:#101828;background:#F5F7FC;border:1.5px solid #D6DEEE;border-radius:10px;padding:11px 12px;width:100%;color-scheme:light}
+#lead-form textarea{resize:vertical;min-height:72px}
+#lead-form input:focus,#lead-form select:focus,#lead-form textarea:focus{outline:none;border-color:#1740D8;box-shadow:0 0 0 3px rgba(23,64,216,.15)}
+.tel{display:flex;align-items:stretch}
+.tel span{display:grid;place-items:center;padding:0 12px;border:1.5px solid #D6DEEE;border-right:0;border-radius:10px 0 0 10px;background:#EEF2FB;font-size:14px;color:#56637E}
+.tel input{border-radius:0 10px 10px 0!important}
+.btn-wa-solid{margin-top:14px;width:100%;background:#1FAF5A;color:#fff;font-size:16px;padding:15px 18px}
+.btn-wa-solid svg{fill:#fff}
+.btn-wa-solid:hover{background:#199A4E}
+.lf-err{font-size:13px;color:#B42318;margin-top:6px}
+.lf-ok{font-size:13.5px;color:#12805C;background:#E2F4EC;border-radius:8px;padding:10px 12px;margin-top:10px}
+.lead-trust{list-style:none;margin:16px 0 0;padding:14px 0 0;border-top:1px solid #E6EBF5;display:grid;gap:6px;font-size:13px;color:#56637E}
+.lead-trust li::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#1740D8;margin-right:9px;vertical-align:middle}
+.fab{display:none}
+.nav .wrap{max-width:1320px}
+@media (max-width:1100px){
+  .shell{grid-template-columns:1fr;grid-template-areas:"hero" "lead" "main"}
+  .lead{position:static;padding-top:8px}
+  .lead-card{max-width:560px}
+  .fab{display:inline-flex;position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;width:58px;height:58px;border-radius:50%;background:#1FAF5A;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+  .fab svg{width:30px;height:30px;fill:#fff}
+}
+@media (max-width:560px){.scards{grid-template-columns:1fr}.steps li,.steps li:last-child{grid-template-columns:52px 1fr;padding:18px}.steps .n{width:52px;height:52px}.mid .wrap,.strip .wrap{padding-inline:18px}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -601,14 +681,15 @@ footer .wrap{display:block}
       <li><a href="#investimento">Investimento</a></li>
       <li><a href="#duvidas">Dúvidas</a></li>
     </ul>
-    <a class="btn btn-white wa-link" href="https://wa.me/5592994515733" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg><span><span class="long">Falar no </span>WhatsApp</span></a>
+    <a class="btn btn-white" href="#orcamento">Pedir orçamento</a>
   </div>
 </nav>
 
+<div class="shell">
 <header class="hero" id="topo">
   <div class="wrap">
     <div class="cover-top">
-      <h1 class="tag">Tecnologia sob medida para empresas que cresceram mais rápido que seus sistemas.</h1>
+      <h1 class="tag"><span class="kick">Software house em Manaus para todo o Brasil</span>Tecnologia sob medida para empresas que cresceram mais rápido que seus sistemas.</h1>
       <div class="cover-r">
         <p class="lead">Criamos sites, sistemas, integrações, automações e dashboards que tiram o trabalho repetitivo da equipe e colocam a informação certa na mão de quem decide.</p>
         <div class="ctas">
@@ -619,7 +700,6 @@ footer .wrap{display:block}
       </div>
     </div>
     <div class="cover-list"><span>Sites profissionais</span><span>Sistemas web</span><span>Integrações</span><span>Automação</span><span>Dashboards</span><span>Aplicativos</span></div>
-    <div class="giant" aria-hidden="true">Dev<span>Hub</span></div>
   </div>
 </header>
 
@@ -919,11 +999,11 @@ footer .wrap{display:block}
       <h2 class="t-h2">Do diagnóstico ao sistema rodando, em cinco etapas.</h2>
     </div>
     <ol class="steps">
-      <li><span class="n">1</span><h3 class="t-h4">Diagnóstico</h3><p class="small">Entendemos o processo atual, as planilhas e onde o tempo se perde. Sem custo.</p></li>
-      <li><span class="n">2</span><h3 class="t-h4">Proposta</h3><p class="small">Escopo, prazo e investimento definidos por escrito antes de começar.</p></li>
-      <li><span class="n">3</span><h3 class="t-h4">Desenvolvimento</h3><p class="small">Entregas por módulo, com a sua validação em cada etapa.</p></li>
-      <li><span class="n">4</span><h3 class="t-h4">Implantação</h3><p class="small">Colocamos no ar, migramos os dados e treinamos a equipe.</p></li>
-      <li><span class="n">5</span><h3 class="t-h4">Suporte</h3><p class="small">Acompanhamento, ajustes e evolução contínua da solução.</p></li>
+      <li><span class="n" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></span><span class="sn">Etapa 1</span><h3 class="t-h4">Diagnóstico</h3><p class="small">Entendemos o processo atual, as planilhas e onde o tempo se perde. Sem custo.</p></li>
+      <li><span class="n" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><span class="sn">Etapa 2</span><h3 class="t-h4">Proposta</h3><p class="small">Escopo, prazo e investimento definidos por escrito antes de começar.</p></li>
+      <li><span class="n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg></span><span class="sn">Etapa 3</span><h3 class="t-h4">Desenvolvimento</h3><p class="small">Entregas por módulo, com a sua validação em cada etapa.</p></li>
+      <li><span class="n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19l4-1 10-10-3-3L6 15l-1 4z"/><path d="M14 6l3 3"/></svg></span><span class="sn">Etapa 4</span><h3 class="t-h4">Implantação</h3><p class="small">Colocamos no ar, migramos os dados e treinamos a equipe.</p></li>
+      <li><span class="n" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 13a8 8 0 0 1 16 0v4a2 2 0 0 1-2 2h-1v-6h3M4 13v4a2 2 0 0 0 2 2h1v-6H4"/></svg></span><span class="sn">Etapa 5</span><h3 class="t-h4">Suporte</h3><p class="small">Acompanhamento, ajustes e evolução contínua da solução.</p></li>
     </ol>
     <p class="tip"><b>Comece por um processo.</b> Automatize a rotina que mais consome horas, meça o resultado e expanda a partir dele.</p>
   </div>
@@ -1224,6 +1304,38 @@ footer .wrap{display:block}
   </div>
 </section>
 </main>
+<aside class="lead" id="orcamento" aria-labelledby="lead-t">
+  <div class="lead-card">
+    <h2 id="lead-t">Solicite um orçamento</h2>
+    <p class="lead-sub">Responda em 30 segundos. A conversa continua no WhatsApp, com quem vai desenvolver.</p>
+    <form id="lead-form" novalidate>
+      <label for="lf-nome">Nome</label>
+      <input id="lf-nome" name="nome" type="text" autocomplete="name" placeholder="Seu nome" required>
+      <label for="lf-emp">Empresa</label>
+      <input id="lf-emp" name="empresa" type="text" autocomplete="organization" placeholder="Nome da empresa">
+      <label for="lf-tel">WhatsApp</label>
+      <div class="tel"><span>+55</span><input id="lf-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(92) 99999-9999" required></div>
+      <label for="lf-need">O que você precisa?</label>
+      <select id="lf-need" name="need">
+        <option>Ainda não sei, quero um diagnóstico</option>
+        <option>Sistema sob medida</option>
+        <option>Automação de tarefas</option>
+        <option>Integração com o ERP</option>
+        <option>Dashboard / Power BI</option>
+        <option>Site profissional</option>
+        <option>Aplicativo</option>
+      </select>
+      <label for="lf-msg">Conte rapidamente (opcional)</label>
+      <textarea id="lf-msg" name="msg" rows="2" placeholder="Ex.: digitamos 50 pedidos por dia no ERP"></textarea>
+      <p class="lf-err" id="lf-err" role="alert" hidden>Preencha seu nome e um WhatsApp com DDD para continuar.</p>
+      <button type="submit" class="btn btn-wa-solid"><svg aria-hidden="true"><use href="#wa"/></svg>Enviar pelo WhatsApp</button>
+      <p class="lf-ok" id="lf-ok" role="status" hidden>Abrimos o WhatsApp com a sua mensagem pronta. Toque em enviar para falar com a gente.</p>
+    </form>
+    <ul class="lead-trust"><li>Diagnóstico gratuito</li><li>Escopo e preço fechados</li><li>Atendimento presencial ou remoto</li></ul>
+  </div>
+</aside>
+</div>
+
 
 <section class="cta" id="contato">
   <div class="wrap">
@@ -1241,6 +1353,7 @@ footer .wrap{display:block}
     </div>
   </div>
 </section>
+<a class="fab wa-link" href="https://wa.me/5592994515733" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg aria-hidden="true"><use href="#wa"/></svg></a>
 <footer>
   <div class="wrap">
     <div class="fgrid">
@@ -1280,6 +1393,25 @@ footer .wrap{display:block}
     var b=this,done=function(){b.textContent='Número copiado';setTimeout(function(){b.textContent='Copiar número'},2000)};
     var sel=function(){var r=document.createRange();r.selectNodeContents($('phone'));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Número selecionado'};
     try{navigator.clipboard.writeText('92994515733').then(done,sel)}catch(e){sel()}
+  });
+})();
+
+(function(){
+  var f=document.getElementById('lead-form'); if(!f) return;
+  var tel=document.getElementById('lf-tel');
+  tel.addEventListener('input',function(){var d=tel.value.replace(/\D/g,'').slice(0,11);var o=d;if(d.length>2)o='('+d.slice(0,2)+') '+d.slice(2);if(d.length>7)o='('+d.slice(0,2)+') '+d.slice(2,d.length-4)+'-'+d.slice(-4);tel.value=o});
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var g=function(id){return document.getElementById(id).value.trim()};
+    var nome=g('lf-nome'),emp=g('lf-emp'),t=g('lf-tel').replace(/\D/g,''),need=g('lf-need'),msg=g('lf-msg');
+    var err=document.getElementById('lf-err'),ok=document.getElementById('lf-ok');
+    if(!nome||t.length<10){err.hidden=false;ok.hidden=true;return}
+    err.hidden=true;
+    var txt='Olá, DevHub! Sou '+nome+(emp?' da '+emp:'')+'. Preciso de: '+need+'.'+(msg?' '+msg:'')+' Meu WhatsApp: '+g('lf-tel')+'. Quero um orçamento.';
+    var url='https://wa.me/5592994515733?text='+encodeURIComponent(txt);
+    var w=null; try{w=window.open(url,'_blank','noopener')}catch(x){}
+    if(!w){var a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove()}
+    ok.hidden=false;
   });
 })();
 </script>
